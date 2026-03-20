@@ -114,6 +114,7 @@
         "type": "string",
         "enum": [
           "paranoia-two-page",
+          "paranoia-intsec-mole",
           "dnd-point-buy",
           "dnd-standard-array",
           "dnd-multiclass",

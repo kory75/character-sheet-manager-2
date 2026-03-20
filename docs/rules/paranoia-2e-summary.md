@@ -327,11 +327,13 @@ The character sheet has **5 weapon slots**. Each slot records:
 
 ### Step 9 — Secret Page: Roll Secret Society
 
-**What the player does:** Roll **1d20** to determine secret society membership. The result maps to position in the secret societies list (1–17, with 18–20 potentially falling on "Other" or repeating — see CLARIFICATIONS_NEEDED).
+**What the player does:** Roll **1d20** to determine secret society membership.
 
 **Important:** Secret society membership is **treasonous**. The secret page is kept hidden from all other players.
 
 **Roll:** 1d20 → index into secret societies list (1-based)
+
+**Special rule — IntSec mole (rolls 18–20):** A roll of 18, 19, or 20 means the character is secretly a member of **IntSec (Internal Security)**. Because IntSec operatives need a plausible cover identity, the player must **roll a second time** (re-rolling any result of 18–20) to determine a cover secret society. The character is recorded as a member of both: IntSec as their true allegiance, and the cover society as their false front. Both are recorded on the secret page.
 
 **Secret Societies List (17 named options + "Other", from paranoia2nd.html dropdown):**
 
@@ -354,6 +356,7 @@ The character sheet has **5 weapon slots**. Each slot records:
 | 15 | Romantics | Obsessed with forbidden lore of the "Old Reckoning" (pre-Alpha Complex history). Information they have is fragmentary and often wrong. Different sects focus on different historical aspects. |
 | 16 | Sierra Club | Obsessed with the environment and the mysterious "Outdoors", access to which The Computer strictly limits. |
 | 17 | Other | Catch-all for custom or campaign-specific secret societies. |
+| 18–20 | **IntSec (mole)** | Character is an Internal Security operative. Roll again (re-roll 18–20) to determine cover society. Both recorded on secret page. |
 
 ---
 
@@ -643,18 +646,24 @@ All items are **Red clearance**.
 
 ## CLARIFICATIONS_NEEDED
 
-1. **Secret Society d20 mapping:** The secret societies dropdown contains 17 named entries plus "Other" (18 total), but random selection uses a d20 (1–20). The legacy `randomSecretSociate()` function rolls 1d20 and sets the dropdown's `.val()` to the number directly, implying entries 18, 19, and 20 on the d20 map to indices that either wrap around or extend into undefined entries. **Ambiguity:** It is unclear whether rolls of 18–20 map to "Other", whether the list has additional societies not shown in the HTML, or whether the roll is meant to be capped at 17 (re-roll 18–20). The implementation should clarify this.
+None.
 
-2. **Attribute bands vs. skill base bands:** The init.json defines two separate band tables — `attributes.bands` (used for the general attribute band display) and `skillbases.skillbase_bands` (used for calculating skill base values). These use different thresholds (e.g., `attributes.bands` has a breakpoint at 11→3, while `skillbases.skillbase_bands` has a breakpoint at 10→3). The skill base band table is the authoritative source for calculating skill starting values.
+---
 
-3. **Mutation type classification (Metabolic vs. Psionic):** The 2nd Edition rulebook distinguishes between Metabolic and Psionic mutations, but the legacy implementation does not store this distinction. The type column in the mutations table above is inferred from the Paranoia XP/Rebooted editions and community references. **Ambiguity:** The exact 2nd Edition categorisation for each mutation has not been verified against the printed rulebook.
+## Resolved Clarifications (for audit trail)
 
-4. **Attribute dice variants:** The legacy implementation uses d20 for all eight attributes. A separate community reference (the RPG Writeups PARANOIA entry) notes some attributes using `1d10+8` or `2d10`. This may reflect an earlier printing or alternate rules. **The legacy implementation (d20 for all attributes) is adopted as canonical for this project.**
+1. **Secret Society d20 mapping (resolved):** Rolls 18–20 = IntSec membership. Character also rolls a second time (re-rolling 18–20) to get a cover society. Both recorded on secret page. See Step 9 special rule.
 
-5. **Starting equipment allocation:** The TardisCaptain walkthrough notes the rulebook lacks explicit starting equipment allocation guidance and players must reference sample characters. The legacy implementation uses a fixed default loadout (Red Reflect Armor, Laser Pistol, Red Laser Barrel, Jumpsuit, Utility Belt, Comm Unit, Notebook & Stylus) plus 100 Plasticredits. This is adopted as canonical.
+2. **Attribute bands vs. skill base bands (resolved):** Two separate band tables exist. Skill base band table (`skillbases.skillbase_bands`) is the authoritative source for skill starting values. Attribute band table (`attributes.bands`) is for display only.
 
-6. **Skill point maximum for service group skills:** The legacy implementation sets service group skills to max 20 (vs. 12 for others). This is not universally documented in community references but is clear and consistent in the implementation code. Adopted as canonical.
+3. **Mutation type classification (resolved):** Keep the Metabolic/Psionic split as documented in the mutations table. Types are inferred from community references and adopted as canonical.
 
-7. **"Spurious Logic" field name typo:** The init.json spells this `skill_suprious_logic` (transposed 'r' and 'i'). The HTML label correctly reads "Spurious Logic". The new implementation should use the correctly spelled field name `skill_spurious_logic`.
+4. **Attribute dice variants (resolved):** d20 for all eight attributes, as per legacy implementation. Canonical for this project.
 
-8. **Tech Services group name discrepancy:** init.json labels this group "Tec Services" (missing the 'h'), but the HTML and all other references use "Tech Services". The correct name is **Tech Services**.
+5. **Starting equipment allocation (resolved):** Fixed default loadout adopted as canonical: Red Reflect Armor, Laser Pistol, Red Laser Barrel, Jumpsuit, Utility Belt, Comm Unit, Notebook & Stylus. Plus 100 Plasticredits.
+
+6. **Skill point maximum for service group skills (resolved):** Max 20 for service group skills, max 12 for all others. Canonical.
+
+7. **"Spurious Logic" typo (resolved):** Field name normalised to `skill_spurious_logic`.
+
+8. **"Tech Services" typo (resolved):** Correct name is "Tech Services" throughout.

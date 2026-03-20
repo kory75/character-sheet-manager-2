@@ -1,0 +1,1241 @@
+{
+  "systemId": "paranoia-2e",
+  "systemName": "Paranoia 2nd Edition",
+  "version": "1.0.0",
+
+  "creationSteps": [
+    {
+      "stepId": "identity",
+      "label": "Identity",
+      "description": "Every citizen of Alpha Complex has a name encoding their clearance and sector. All Troubleshooters begin at Red clearance. Record your name following the Alpha Complex naming convention: FirstName-ClearanceLetter-SectorCode-CloneNumber.",
+      "fields": [
+        {
+          "id": "characterName",
+          "label": "Character Name",
+          "type": "text",
+          "placeholder": "e.g. Car-R-PET-1",
+          "notes": "Alpha Complex format: FirstName-ClearanceLetter-SectorCode-CloneNumber. Clone number starts at 1 and increments on death."
+        },
+        {
+          "id": "clearance",
+          "label": "Clearance",
+          "type": "dropdown",
+          "defaultValue": "R",
+          "options": [
+            { "value": "IR", "label": "IR — Infrared", "description": "Lowest level. Mindless drudgery and heavy medication." },
+            { "value": "R",  "label": "R — Red",       "description": "Starting level for all Troubleshooters." },
+            { "value": "O",  "label": "O — Orange",    "description": "First promotion level." },
+            { "value": "Y",  "label": "Y — Yellow",    "description": "Mid-tier clearance." },
+            { "value": "G",  "label": "G — Green",     "description": "Upper-middle clearance." },
+            { "value": "B",  "label": "B — Blue",      "description": "Senior clearance." },
+            { "value": "I",  "label": "I — Indigo",    "description": "High clearance." },
+            { "value": "V",  "label": "V — Violet",    "description": "Near-top clearance." },
+            { "value": "UV", "label": "UV — Ultraviolet", "description": "Highest level. High Programmers. May access and modify The Computer." }
+          ]
+        },
+        {
+          "id": "playerName",
+          "label": "Player Name",
+          "type": "text",
+          "placeholder": "Enter your real name..."
+        }
+      ]
+    },
+
+    {
+      "stepId": "attributes",
+      "label": "Attributes",
+      "description": "Roll 1d20 for each of the eight core attributes. You may re-roll your two lowest results but must accept the second roll regardless. All attributes range from 1 to 20.",
+      "fields": [
+        {
+          "id": "strength",
+          "label": "Strength",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "group": "Physical",
+          "notes": "Governs melee damage bonus and carrying capacity."
+        },
+        {
+          "id": "endurance",
+          "label": "Endurance",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "group": "Physical",
+          "notes": "Governs Macho Bonus."
+        },
+        {
+          "id": "agility",
+          "label": "Agility",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "group": "Physical",
+          "notes": "Governs Agility skill group base."
+        },
+        {
+          "id": "dexterity",
+          "label": "Dexterity",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "group": "Physical",
+          "notes": "Governs Dexterity skill group base."
+        },
+        {
+          "id": "moxie",
+          "label": "Moxie",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "group": "Mental",
+          "notes": "Intelligence, comprehension, perception. Governs Moxie skill group base."
+        },
+        {
+          "id": "chutzpah",
+          "label": "Chutzpah",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "group": "Mental",
+          "notes": "Social audacity, nerve, persuasion. Governs Chutzpah skill group base."
+        },
+        {
+          "id": "mech",
+          "label": "Mech. Aptitude",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "group": "Mental",
+          "notes": "Mechanical Aptitude. Understanding and operating machinery. Governs Mechanical skill group base."
+        },
+        {
+          "id": "mutant_power",
+          "label": "Mutant Power",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "group": "Secret",
+          "notes": "POW. Governs effectiveness of the character's secret mutant ability. Higher POW enables more powerful mutation applications."
+        }
+      ]
+    },
+
+    {
+      "stepId": "derived-stats",
+      "label": "Derived Stats",
+      "description": "These values are automatically calculated from your attributes. They are read-only.",
+      "fields": [
+        {
+          "id": "agility_skill_base",
+          "label": "Agility Skill Base",
+          "type": "calculated",
+          "dependsOn": ["agility"],
+          "derivation": "calcSkillBase",
+          "minValue": 0,
+          "maxValue": 5,
+          "notes": "Skill base band table: 1-3→0, 4-6→1, 7-9→2, 10-13→3, 14-16→4, 17-20→5. Starting value for all Agility skills."
+        },
+        {
+          "id": "dexterity_skill_base",
+          "label": "Dexterity Skill Base",
+          "type": "calculated",
+          "dependsOn": ["dexterity"],
+          "derivation": "calcSkillBase",
+          "minValue": 0,
+          "maxValue": 5,
+          "notes": "Same skill base band table applied to Dexterity. Starting value for all Dexterity skills."
+        },
+        {
+          "id": "moxie_skill_base",
+          "label": "Moxie Skill Base",
+          "type": "calculated",
+          "dependsOn": ["moxie"],
+          "derivation": "calcSkillBase",
+          "minValue": 0,
+          "maxValue": 5,
+          "notes": "Same skill base band table applied to Moxie. Starting value for all Moxie skills."
+        },
+        {
+          "id": "chutzpah_skill_base",
+          "label": "Chutzpah Skill Base",
+          "type": "calculated",
+          "dependsOn": ["chutzpah"],
+          "derivation": "calcSkillBase",
+          "minValue": 0,
+          "maxValue": 5,
+          "notes": "Same skill base band table applied to Chutzpah. Starting value for all Chutzpah skills."
+        },
+        {
+          "id": "mech_skill_base",
+          "label": "Mech Skill Base",
+          "type": "calculated",
+          "dependsOn": ["mech"],
+          "derivation": "calcSkillBase",
+          "minValue": 0,
+          "maxValue": 5,
+          "notes": "Same skill base band table applied to Mechanical Aptitude. Starting value for all Mechanical skills."
+        },
+        {
+          "id": "damage_bonus",
+          "label": "Damage Bonus",
+          "type": "calculated",
+          "dependsOn": ["strength"],
+          "derivation": "calcDamageBonus",
+          "minValue": 0,
+          "maxValue": 2,
+          "notes": "STR 1-13 → 0; STR 14-18 → +1; STR 19-20 → +2. Added to melee damage rolls."
+        },
+        {
+          "id": "macho_bonus",
+          "label": "Macho Bonus",
+          "type": "calculated",
+          "dependsOn": ["endurance"],
+          "derivation": "calcMachoBonus",
+          "minValue": 0,
+          "maxValue": 2,
+          "notes": "END 1-13 → 0; END 14-18 → +1; END 19-20 → +2."
+        },
+        {
+          "id": "carrying_capacity",
+          "label": "Carrying Capacity (kg)",
+          "type": "calculated",
+          "dependsOn": ["strength"],
+          "derivation": "calcCarryingCapacity",
+          "minValue": 25,
+          "maxValue": 65,
+          "notes": "Formula: max(0, STR - 12) * 5 + 25. Minimum 25 kg for STR ≤ 12."
+        }
+      ]
+    },
+
+    {
+      "stepId": "service-group",
+      "label": "Service Group",
+      "description": "Choose your service group from the eight available, or roll 1d20 to determine it randomly. Your service group grants expanded skill caps (max 20) for a specific set of skills.",
+      "fields": [
+        {
+          "id": "serviceGroupRoll",
+          "label": "Roll for Service Group",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "notes": "Roll result is fed to rollServiceGroup() to map to a service group id. The UI uses this roll to auto-select the serviceGroup dropdown. d20 ranges: 1-2=intsec, 3-4=tech-services, 5-8=hpdmc, 9-11=armed-services, 12-14=plc, 15-16=power-services, 17-18=rd, 19-20=cpu."
+        },
+        {
+          "id": "serviceGroup",
+          "label": "Service Group",
+          "type": "dropdown",
+          "defaultValue": "plc",
+          "options": [
+            {
+              "value": "intsec",
+              "label": "IntSec — Internal Security",
+              "description": "The secret police. Identifies and eliminates traitors. Provides Security and Termination Vouchers. Skills: Truncheon, Unarmed, Interrogation, Intimidation, Laser Weapons, Security, Surveillance."
+            },
+            {
+              "value": "tech-services",
+              "label": "Tech Services — Technical Services",
+              "description": "Repairs all manner of devices and weapons. Skills: Spurious Logic, Autocar Op. & Maint., TransBot Op. & Maint., DocBot Op. & Maint., JackoBot Op. & Maint., ScruBot Op. & Maint., Electronic Engineering, Mechanical Engineering."
+            },
+            {
+              "value": "hpdmc",
+              "label": "HPD&MC — Housing Preservation Development & Mind Control",
+              "description": "Responsible for health and welfare: housing, clothing, medicines. Skills: Bootlicking, Con, Forgery, Oratory, DocBot Op. & Maint., Biochemical Therapy, Medical."
+            },
+            {
+              "value": "armed-services",
+              "label": "Armed Services — The Army",
+              "description": "Protects Alpha Complex from external threats. Equipped with heavy weaponry. Skills: Grenade, Primitive Melee Weapons, Unarmed, Motivation, Laser Weapons, Projectile Weapons, Demolition, Survival, Vulturecraft Op. & Maint."
+            },
+            {
+              "value": "plc",
+              "label": "PLC — Production, Logistics, and Commissary",
+              "description": "Provides food, clothing, and equipment — including all the lasers. Skills: Bribery, Fast Talk, Forgery, Habitat Engineering, JackoBot Op. & Maint., Biosciences."
+            },
+            {
+              "value": "power-services",
+              "label": "Power Services",
+              "description": "Provides power for the entire Complex. Also requisitions large vehicles and devices. Skills: Spurious Logic, Habitat Engineering, JackoBot Op. & Maint., Chemical Engineering, Electronic Engineering, Mechanical Engineering, Nuclear Engineering."
+            },
+            {
+              "value": "rd",
+              "label": "R&D — Research and Design",
+              "description": "Creates experimental prototype devices. Skills: JackoBot Op. & Maint., Biosciences, Data Analysis, Data Search, Electronic Engineering, Mechanical Engineering."
+            },
+            {
+              "value": "cpu",
+              "label": "CPU — Central Processing Unit",
+              "description": "Coordinates all service groups. Records missions and witnesses Troubleshooter actions. Skills: Fast Talk, Intimidation, Motivation, Psychescan, Security, Data Analysis, Data Search."
+            }
+          ],
+          "notes": "Selecting a service group grants max 20 (instead of 12) for that group's designated skills. On change, skill point pool resets to 30 and skill bases recalculate. See getServiceGroupSkills() in creation-rules.ts."
+        }
+      ]
+    },
+
+    {
+      "stepId": "skills",
+      "label": "Skills",
+      "description": "Distribute 30 skill points among all skills. Each skill starts at its group's Skill Base at no cost. Standard maximum per skill is 12; your service group's designated skills can reach 20. The point counter cannot go below 0.",
+      "fields": [
+        {
+          "id": "skill_force_sword",
+          "label": "Force Sword",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Agility Skills",
+          "notes": "Melee Combat. Standard max 12; no service group raises this to 20."
+        },
+        {
+          "id": "skill_grenade",
+          "label": "Grenade",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Agility Skills",
+          "notes": "Missile Combat. Max 20 for Armed Services. Logic handled by getSkillMax() in creation-rules.ts."
+        },
+        {
+          "id": "skill_neurowhip",
+          "label": "Neurowhip",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Agility Skills",
+          "notes": "Melee Combat. Standard max 12."
+        },
+        {
+          "id": "skill_primitive_melee_weapons",
+          "label": "Primitive Melee Weapons",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Agility Skills",
+          "notes": "Melee Combat. Max 20 for Armed Services."
+        },
+        {
+          "id": "skill_truncheon",
+          "label": "Truncheon",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Agility Skills",
+          "notes": "Melee Combat. Max 20 for IntSec."
+        },
+        {
+          "id": "skill_unarmed",
+          "label": "Unarmed",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Agility Skills",
+          "notes": "Melee Combat. Max 20 for IntSec and Armed Services."
+        },
+        {
+          "id": "skill_bootlicking",
+          "label": "Bootlicking",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Chutzpah Skills",
+          "notes": "Ingratiating yourself with superiors. Max 20 for HPD&MC."
+        },
+        {
+          "id": "skill_bribery",
+          "label": "Bribery",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Chutzpah Skills",
+          "notes": "TREASONOUS skill — trading items for services is illegal. Max 20 for PLC."
+        },
+        {
+          "id": "skill_con",
+          "label": "Con",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Chutzpah Skills",
+          "notes": "Persuading someone to let you do something they probably shouldn't allow. Max 20 for HPD&MC."
+        },
+        {
+          "id": "skill_fast_talk",
+          "label": "Fast Talk",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Chutzpah Skills",
+          "notes": "Like Con but quicker (e.g. getting past a checkpoint). Max 20 for PLC and CPU."
+        },
+        {
+          "id": "skill_forgery",
+          "label": "Forgery",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Chutzpah Skills",
+          "notes": "TREASONOUS skill — faking forms and signatures is illegal. Max 20 for HPD&MC and PLC."
+        },
+        {
+          "id": "skill_interrogation",
+          "label": "Interrogation",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Chutzpah Skills",
+          "notes": "Extracting information from Commie scum. Max 20 for IntSec."
+        },
+        {
+          "id": "skill_intimidation",
+          "label": "Intimidation",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Chutzpah Skills",
+          "notes": "Getting cooperation from inferiors. Max 20 for IntSec and CPU."
+        },
+        {
+          "id": "skill_motivation",
+          "label": "Motivation",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Chutzpah Skills",
+          "notes": "Getting a few people thinking your idea is a good idea. Max 20 for Armed Services and CPU."
+        },
+        {
+          "id": "skill_oratory",
+          "label": "Oratory",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Chutzpah Skills",
+          "notes": "Speech-giving; Motivation for large groups. Max 20 for HPD&MC."
+        },
+        {
+          "id": "skill_psychescan",
+          "label": "Psychescan",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Chutzpah Skills",
+          "notes": "Lie detection when talking to someone. Max 20 for CPU."
+        },
+        {
+          "id": "skill_spurious_logic",
+          "label": "Spurious Logic",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Chutzpah Skills",
+          "notes": "Con & Fast Talk specifically for use against Bots and computers. Max 20 for Tech Services and Power Services. Note: legacy init.json typo was 'suprious_logic'; corrected here."
+        },
+        {
+          "id": "skill_energy_weapons",
+          "label": "Energy Weapons",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Dexterity Skills",
+          "notes": "Missile Combat. Includes repairing them. Standard max 12."
+        },
+        {
+          "id": "skill_field_weapons",
+          "label": "Field Weapons",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Dexterity Skills",
+          "notes": "Missile Combat. Includes repairing them. Standard max 12."
+        },
+        {
+          "id": "skill_laser_weapons",
+          "label": "Laser Weapons",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Dexterity Skills",
+          "notes": "Missile Combat. Includes repairing them. Max 20 for IntSec and Armed Services. Weapon Skill Number for slot 1 (Laser Pistol) auto-populates from this skill."
+        },
+        {
+          "id": "skill_projectile_weapons",
+          "label": "Projectile Weapons",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Dexterity Skills",
+          "notes": "Missile Combat. Includes repairing them. Max 20 for Armed Services."
+        },
+        {
+          "id": "skill_primitive_missile_weapons",
+          "label": "Primitive Missile Weapons",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Dexterity Skills",
+          "notes": "Bow and arrows, Bouncy Bubble Beverage containers... Standard max 12."
+        },
+        {
+          "id": "skill_vehicle_aimed_weapons",
+          "label": "Vehicle Aimed Weapons",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Dexterity Skills",
+          "notes": "Vehicle Combat. Standard max 12."
+        },
+        {
+          "id": "skill_vehicle_field_weapons",
+          "label": "Vehicle Field Weapons",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Dexterity Skills",
+          "notes": "Vehicle Combat. Standard max 12."
+        },
+        {
+          "id": "skill_vehicle_launched_weapons",
+          "label": "Vehicle Launched Weapons",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Dexterity Skills",
+          "notes": "Vehicle Combat. Standard max 12."
+        },
+        {
+          "id": "skill_habitat_engineering",
+          "label": "Habitat Engineering",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Mechanical Skills",
+          "notes": "Knowledge of air, comm, transport, water, and waste systems. Max 20 for PLC and Power Services."
+        },
+        {
+          "id": "skill_jackobot_operation",
+          "label": "JackoBot Op. & Maint.",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Mechanical Skills",
+          "notes": "How to use and repair JackoBots. Max 20 for Tech Services, PLC, Power Services, and R&D."
+        },
+        {
+          "id": "skill_docbot_operation",
+          "label": "DocBot Op. & Maint.",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Mechanical Skills",
+          "notes": "How to use and repair DocBots. Max 20 for Tech Services and HPD&MC."
+        },
+        {
+          "id": "skill_transbot_operation",
+          "label": "TransBot Op. & Maint.",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Mechanical Skills",
+          "notes": "How to use and repair TransBots. Max 20 for Tech Services."
+        },
+        {
+          "id": "skill_scrubot_operation",
+          "label": "ScruBot Op. & Maint.",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Mechanical Skills",
+          "notes": "How to use and repair ScruBots. Max 20 for Tech Services."
+        },
+        {
+          "id": "skill_vulturecraft_operation",
+          "label": "Vulturecraft Op. & Maint.",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Mechanical Skills",
+          "notes": "How to use and repair Vulturecraft vehicles. Max 20 for Armed Services."
+        },
+        {
+          "id": "skill_autocar_operation",
+          "label": "Autocar Op. & Maint.",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Mechanical Skills",
+          "notes": "How to use and repair Autocars. Max 20 for Tech Services."
+        },
+        {
+          "id": "skill_biochemical_therapy",
+          "label": "Biochemical Therapy",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Better living through chemistry. Max 20 for HPD&MC."
+        },
+        {
+          "id": "skill_biosciences",
+          "label": "Biosciences",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Making mutant monsters. Max 20 for PLC and R&D."
+        },
+        {
+          "id": "skill_chemical_engineering",
+          "label": "Chemical Engineering",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Mixing chemicals, often with explosive results. Max 20 for Power Services."
+        },
+        {
+          "id": "skill_data_analysis",
+          "label": "Data Analysis",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Making sense of Computer-printed materials. Max 20 for R&D and CPU."
+        },
+        {
+          "id": "skill_data_search",
+          "label": "Data Search",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Finding information using Friend Computer. Max 20 for R&D and CPU."
+        },
+        {
+          "id": "skill_demolition",
+          "label": "Demolition",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Blowing big things up without blowing yourself up too. Max 20 for Armed Services."
+        },
+        {
+          "id": "skill_electronic_engineering",
+          "label": "Electronic Engineering",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Making electronic devices from resistors and capacitors. Max 20 for Tech Services, Power Services, and R&D."
+        },
+        {
+          "id": "skill_mechanical_engineering",
+          "label": "Mechanical Engineering",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Rube Goldberg contraptions. Max 20 for Tech Services, Power Services, and R&D."
+        },
+        {
+          "id": "skill_medical",
+          "label": "Medical",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Healing injured Citizens. Max 20 for HPD&MC."
+        },
+        {
+          "id": "skill_nuclear_engineering",
+          "label": "Nuclear Engineering",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Stopping reactor meltdowns. Max 20 for Power Services."
+        },
+        {
+          "id": "skill_old_reckoning_cultures",
+          "label": "Old Reckoning Cultures",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Knowledge of Pre-Oops people and things. Standard max 12."
+        },
+        {
+          "id": "skill_security",
+          "label": "Security",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Disabling locks and alarms. Max 20 for IntSec and CPU."
+        },
+        {
+          "id": "skill_stealth",
+          "label": "Stealth",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "The art of not being seen. Standard max 12."
+        },
+        {
+          "id": "skill_surveillance",
+          "label": "Surveillance",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "Bugging and debugging things. Max 20 for IntSec."
+        },
+        {
+          "id": "skill_survival",
+          "label": "Survival",
+          "type": "pointAlloc",
+          "pool": 30,
+          "minValue": 0,
+          "maxValue": 12,
+          "group": "Moxie Skills",
+          "notes": "How to live Outdoors without generating clone replacements. Max 20 for Armed Services."
+        }
+      ]
+    },
+
+    {
+      "stepId": "weapons-armour",
+      "label": "Weapons & Armour",
+      "description": "Record your weapons and armour. Slot 1 is pre-filled with your standard-issue Laser Pistol. Mark experimental weapons with the checkbox.",
+      "fields": [
+        {
+          "id": "weapon1_name",
+          "label": "Weapon 1 Name",
+          "type": "text",
+          "defaultValue": "Laser Pistol",
+          "group": "Weapon Slot 1"
+        },
+        {
+          "id": "weapon1_type",
+          "label": "Weapon 1 Type",
+          "type": "text",
+          "defaultValue": "L",
+          "group": "Weapon Slot 1",
+          "notes": "Type code, e.g. L for Laser."
+        },
+        {
+          "id": "weapon1_damage",
+          "label": "Weapon 1 Damage",
+          "type": "text",
+          "defaultValue": "8",
+          "group": "Weapon Slot 1"
+        },
+        {
+          "id": "weapon1_range",
+          "label": "Weapon 1 Range",
+          "type": "text",
+          "defaultValue": "20",
+          "group": "Weapon Slot 1"
+        },
+        {
+          "id": "weapon1_experimental",
+          "label": "Weapon 1 Experimental",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Weapon Slot 1",
+          "notes": "Marks R&D-issued prototype weapons."
+        },
+        {
+          "id": "weapon2_name",
+          "label": "Weapon 2 Name",
+          "type": "text",
+          "group": "Weapon Slot 2"
+        },
+        {
+          "id": "weapon2_type",
+          "label": "Weapon 2 Type",
+          "type": "text",
+          "group": "Weapon Slot 2"
+        },
+        {
+          "id": "weapon2_damage",
+          "label": "Weapon 2 Damage",
+          "type": "text",
+          "group": "Weapon Slot 2"
+        },
+        {
+          "id": "weapon2_range",
+          "label": "Weapon 2 Range",
+          "type": "text",
+          "group": "Weapon Slot 2"
+        },
+        {
+          "id": "weapon2_experimental",
+          "label": "Weapon 2 Experimental",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Weapon Slot 2"
+        },
+        {
+          "id": "weapon3_name",
+          "label": "Weapon 3 Name",
+          "type": "text",
+          "group": "Weapon Slot 3"
+        },
+        {
+          "id": "weapon3_type",
+          "label": "Weapon 3 Type",
+          "type": "text",
+          "group": "Weapon Slot 3"
+        },
+        {
+          "id": "weapon3_damage",
+          "label": "Weapon 3 Damage",
+          "type": "text",
+          "group": "Weapon Slot 3"
+        },
+        {
+          "id": "weapon3_range",
+          "label": "Weapon 3 Range",
+          "type": "text",
+          "group": "Weapon Slot 3"
+        },
+        {
+          "id": "weapon3_experimental",
+          "label": "Weapon 3 Experimental",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Weapon Slot 3"
+        },
+        {
+          "id": "weapon4_name",
+          "label": "Weapon 4 Name",
+          "type": "text",
+          "group": "Weapon Slot 4"
+        },
+        {
+          "id": "weapon4_type",
+          "label": "Weapon 4 Type",
+          "type": "text",
+          "group": "Weapon Slot 4"
+        },
+        {
+          "id": "weapon4_damage",
+          "label": "Weapon 4 Damage",
+          "type": "text",
+          "group": "Weapon Slot 4"
+        },
+        {
+          "id": "weapon4_range",
+          "label": "Weapon 4 Range",
+          "type": "text",
+          "group": "Weapon Slot 4"
+        },
+        {
+          "id": "weapon4_experimental",
+          "label": "Weapon 4 Experimental",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Weapon Slot 4"
+        },
+        {
+          "id": "weapon5_name",
+          "label": "Weapon 5 Name",
+          "type": "text",
+          "group": "Weapon Slot 5"
+        },
+        {
+          "id": "weapon5_type",
+          "label": "Weapon 5 Type",
+          "type": "text",
+          "group": "Weapon Slot 5"
+        },
+        {
+          "id": "weapon5_damage",
+          "label": "Weapon 5 Damage",
+          "type": "text",
+          "group": "Weapon Slot 5"
+        },
+        {
+          "id": "weapon5_range",
+          "label": "Weapon 5 Range",
+          "type": "text",
+          "group": "Weapon Slot 5"
+        },
+        {
+          "id": "weapon5_experimental",
+          "label": "Weapon 5 Experimental",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Weapon Slot 5"
+        },
+        {
+          "id": "armour_worn",
+          "label": "Armour Worn (Type)",
+          "type": "text",
+          "defaultValue": "L",
+          "group": "Armour",
+          "notes": "Type code for armour worn."
+        },
+        {
+          "id": "armour_rating",
+          "label": "Armour Rating",
+          "type": "text",
+          "defaultValue": "4",
+          "group": "Armour",
+          "notes": "Standard Red Reflect Armor has rating 4."
+        }
+      ]
+    },
+
+    {
+      "stepId": "equipment",
+      "label": "Equipment",
+      "description": "All Troubleshooters receive standard-issue equipment. You start with 100 Plasticredits to purchase additional items.",
+      "fields": [
+        {
+          "id": "credits",
+          "label": "Plasticredits",
+          "type": "text",
+          "defaultValue": "100",
+          "notes": "Starting credits: 100 Plasticredits. Decremented as additional equipment is purchased."
+        },
+        {
+          "id": "equipment_notes",
+          "label": "Equipment List",
+          "type": "textarea",
+          "defaultValue": "Red Reflect Armor (Type L, Rating 4)\nLaser Pistol (Type L, Damage 8, Range 20)\nRed Laser Barrel\nJumpsuit\nUtility Belt with Pouches\nComm Unit Type I\nNotebook & Stylus",
+          "placeholder": "List all equipment here...",
+          "notes": "Default loadout is pre-filled. Additional purchases from the equipment list are appended here."
+        }
+      ]
+    },
+
+    {
+      "stepId": "secret-mutation",
+      "label": "Secret Mutation",
+      "description": "Roll 1d20 to determine your secret mutant power. This is recorded on your secret page — concealed from all other players. Possessing an unregistered mutation is TREASONOUS.",
+      "fields": [
+        {
+          "id": "mutationRoll",
+          "label": "Roll for Mutation",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "notes": "Roll result maps 1-based to the mutations list. UI uses rollMutation() to set the mutationName dropdown."
+        },
+        {
+          "id": "mutationName",
+          "label": "Mutation",
+          "type": "dropdown",
+          "options": [
+            { "value": "adrenaline-control",  "label": "Adrenaline Control",  "description": "Metabolic. Boosts Agility and Unarmed Combat to 18; superhuman strength and speed." },
+            { "value": "charm",               "label": "Charm",               "description": "Psionic. Basic use targets one clone for a scene; harder push affects multiple targets." },
+            { "value": "deep-probe",          "label": "Deep Probe",          "description": "Psionic. Deep mental scan or probe of a target's thoughts or memories." },
+            { "value": "electroshock",        "label": "Electroshock",        "description": "Psionic. Touch-range electrical discharge; more power extends to ranged zap." },
+            { "value": "empathy",             "label": "Empathy",             "description": "Psionic. Sense the emotional state of nearby persons." },
+            { "value": "energy-field",        "label": "Energy Field",        "description": "Metabolic. Generate a protective energy field around the body." },
+            { "value": "hypersenses",         "label": "Hypersenses",         "description": "Metabolic. Enhanced sensory perception (hearing, sight, etc.)." },
+            { "value": "levitation",          "label": "Levitation",          "description": "Psionic. Rise ~1 metre and move at walking pace; more power for height and speed." },
+            { "value": "machine-empathy",     "label": "Machine Empathy",     "description": "Psionic. Communicate with and understand machines and computers." },
+            { "value": "matter-eater",        "label": "Matter Eater",        "description": "Metabolic. Consume and digest any material safely." },
+            { "value": "mechanical-intuition","label": "Mechanical Intuition","description": "Metabolic. Instinctive understanding of mechanical systems." },
+            { "value": "mental-blast",        "label": "Mental Blast",        "description": "Psionic. Point-blank AoE: nosebleeds and headaches; amplified to blackouts, injury, seizures, death." },
+            { "value": "polymorphism",        "label": "Polymorphism",        "description": "Metabolic. Alter physical form and appearance." },
+            { "value": "precognition",        "label": "Precognition",        "description": "Psionic. Glimpse possible near-future events." },
+            { "value": "pyrokinesis",         "label": "Pyrokinesis",         "description": "Psionic. Ignite nearby flames; amplified to distant targets, larger fires." },
+            { "value": "regeneration",        "label": "Regeneration",        "description": "Metabolic. Accelerated healing of wounds." },
+            { "value": "telekinesis",         "label": "Telekinesis",         "description": "Psionic. Move a small object mentally; amplified for larger items and precision." },
+            { "value": "telepathy",           "label": "Telepathy",           "description": "Psionic. Read dominant thought or implant a suggestion in one target." },
+            { "value": "teleport",            "label": "Teleport",            "description": "Psionic. Personal teleportation; amplified to transport companions or greater distance." },
+            { "value": "x-ray-vision",        "label": "X-Ray Vision",        "description": "Metabolic. See through solid objects." }
+          ],
+          "notes": "Dropdown set by rollMutation(d20). The Mutant Power attribute (POW) governs effectiveness."
+        },
+        {
+          "id": "mutation_notes",
+          "label": "Mutation Notes",
+          "type": "textarea",
+          "placeholder": "Record mutation details, Power Index, usage notes...",
+          "notes": "Secret page field. Hidden from other players."
+        }
+      ]
+    },
+
+    {
+      "stepId": "secret-society",
+      "label": "Secret Society",
+      "description": "Roll 1d20 to determine your secret society membership. This is TREASONOUS — keep this page hidden from all other players. A roll of 18-20 means you are an IntSec mole and must roll again for a cover society.",
+      "fields": [
+        {
+          "id": "societyRoll",
+          "label": "Roll for Secret Society",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "notes": "Mapped by rollSecretSociety(). Rolls 18-20 set primarySociety=intsec and trigger coverSocietyRoll."
+        },
+        {
+          "id": "primarySociety",
+          "label": "Secret Society",
+          "type": "dropdown",
+          "options": [
+            { "value": "anti-mutant",           "label": "Anti-Mutant",            "description": "Eradicate all mutants from Alpha Complex." },
+            { "value": "computer-phreaks",      "label": "Computer Phreaks",       "description": "Hack Computer terminals and records. Friendly with Pro Tech; hostile to FCCCP." },
+            { "value": "communists",            "label": "Communists",             "description": "Overthrow The Computer; Marxist revolution." },
+            { "value": "corpore-metal",         "label": "Corpore Metal",          "description": "Bot/AI supremacy. Friendly with Pro Tech; hostile to Frankenstein Destroyers, Humanists, PURGE." },
+            { "value": "death-leopard",         "label": "Death Leopard",          "description": "Blow things up and defy authority. No deeper ideology — just chaos." },
+            { "value": "fcccp",                 "label": "FCCCP",                  "description": "First Church of Christ Computer Programmer. Worship The Computer as divine." },
+            { "value": "frankenstein-destroyers","label": "Frankenstein Destroyers","description": "Destroy all robots and AI. Extreme Luddism." },
+            { "value": "free-enterprise",       "label": "Free Enterprise",        "description": "Pseudo-mafia capitalism. Run Infrared black markets." },
+            { "value": "humanists",             "label": "Humanists",              "description": "Reform Alpha Complex; restore power to humans via hidden backdoors." },
+            { "value": "illuminati",            "label": "Illuminati",             "description": "Inscrutable hidden goals; most members don't know the actual agenda." },
+            { "value": "mystics",               "label": "Mystics",                "description": "Enlightenment — primarily through recreational drug use." },
+            { "value": "pro-tech",              "label": "Pro Tech",               "description": "Gadget obsession; steal and repurpose experimental tech." },
+            { "value": "psion",                 "label": "Psion",                  "description": "Mutant-run future. Led by telepathic 'Controls'." },
+            { "value": "purge",                 "label": "PURGE",                  "description": "Violent overthrow of The Computer. No post-revolution plan." },
+            { "value": "romantics",             "label": "Romantics",              "description": "Obsession with forbidden Old Reckoning history." },
+            { "value": "sierra-club",           "label": "Sierra Club",            "description": "Obsession with the environment and the mysterious Outdoors." },
+            { "value": "other",                 "label": "Other",                  "description": "Custom or campaign-specific secret society." },
+            { "value": "intsec",                "label": "IntSec (Mole)",          "description": "Internal Security operative. Rolled on 18-20. Must also roll a cover society." }
+          ],
+          "notes": "Set by rollSecretSociety(). If value is 'intsec', show coverSocietyRoll and coverSociety fields (paranoia-intsec-mole special rule)."
+        },
+        {
+          "id": "coverSocietyRoll",
+          "label": "Roll for Cover Society",
+          "type": "roll",
+          "rollFormula": "1d20",
+          "minValue": 1,
+          "maxValue": 20,
+          "notes": "Only visible when primarySociety == 'intsec'. Mapped by rollCoverSociety(); re-rolls 18-20 internally until a valid non-IntSec result is obtained."
+        },
+        {
+          "id": "coverSociety",
+          "label": "Cover Society (IntSec Mole)",
+          "type": "dropdown",
+          "options": [
+            { "value": "anti-mutant",            "label": "Anti-Mutant" },
+            { "value": "computer-phreaks",       "label": "Computer Phreaks" },
+            { "value": "communists",             "label": "Communists" },
+            { "value": "corpore-metal",          "label": "Corpore Metal" },
+            { "value": "death-leopard",          "label": "Death Leopard" },
+            { "value": "fcccp",                  "label": "FCCCP" },
+            { "value": "frankenstein-destroyers","label": "Frankenstein Destroyers" },
+            { "value": "free-enterprise",        "label": "Free Enterprise" },
+            { "value": "humanists",              "label": "Humanists" },
+            { "value": "illuminati",             "label": "Illuminati" },
+            { "value": "mystics",                "label": "Mystics" },
+            { "value": "pro-tech",               "label": "Pro Tech" },
+            { "value": "psion",                  "label": "Psion" },
+            { "value": "purge",                  "label": "PURGE" },
+            { "value": "romantics",              "label": "Romantics" },
+            { "value": "sierra-club",            "label": "Sierra Club" },
+            { "value": "other",                  "label": "Other" }
+          ],
+          "notes": "Only visible when primarySociety == 'intsec'. Set by rollCoverSociety(). Does NOT include IntSec as an option."
+        },
+        {
+          "id": "society_notes",
+          "label": "Society Notes",
+          "type": "textarea",
+          "placeholder": "Record society instructions, contacts, missions...",
+          "notes": "Secret page field. Hidden from other players."
+        }
+      ]
+    },
+
+    {
+      "stepId": "notes",
+      "label": "Notes",
+      "description": "Record any additional information for your character.",
+      "fields": [
+        {
+          "id": "public_notes",
+          "label": "Notes",
+          "type": "textarea",
+          "placeholder": "Mission notes, commendations, treason points, contacts..."
+        }
+      ]
+    }
+  ],
+
+  "sheetSections": [
+    {
+      "sectionId": "core-identity",
+      "label": "Identity",
+      "fieldIds": ["characterName", "clearance", "playerName"]
+    },
+    {
+      "sectionId": "attributes",
+      "label": "Attributes",
+      "fieldIds": [
+        "strength", "endurance", "agility", "dexterity",
+        "moxie", "chutzpah", "mech", "mutant_power"
+      ]
+    },
+    {
+      "sectionId": "derived-stats",
+      "label": "Derived Statistics",
+      "fieldIds": [
+        "agility_skill_base", "dexterity_skill_base", "moxie_skill_base",
+        "chutzpah_skill_base", "mech_skill_base",
+        "damage_bonus", "macho_bonus", "carrying_capacity"
+      ]
+    },
+    {
+      "sectionId": "service-group",
+      "label": "Service Group",
+      "fieldIds": ["serviceGroupRoll", "serviceGroup"]
+    },
+    {
+      "sectionId": "skills-agility",
+      "label": "Agility Skills",
+      "fieldIds": [
+        "skill_force_sword", "skill_grenade", "skill_neurowhip",
+        "skill_primitive_melee_weapons", "skill_truncheon", "skill_unarmed"
+      ]
+    },
+    {
+      "sectionId": "skills-chutzpah",
+      "label": "Chutzpah Skills",
+      "fieldIds": [
+        "skill_bootlicking", "skill_bribery", "skill_con", "skill_fast_talk",
+        "skill_forgery", "skill_interrogation", "skill_intimidation",
+        "skill_motivation", "skill_oratory", "skill_psychescan", "skill_spurious_logic"
+      ]
+    },
+    {
+      "sectionId": "skills-dexterity",
+      "label": "Dexterity Skills",
+      "fieldIds": [
+        "skill_energy_weapons", "skill_field_weapons", "skill_laser_weapons",
+        "skill_projectile_weapons", "skill_primitive_missile_weapons",
+        "skill_vehicle_aimed_weapons", "skill_vehicle_field_weapons", "skill_vehicle_launched_weapons"
+      ]
+    },
+    {
+      "sectionId": "skills-mechanical",
+      "label": "Mechanical Skills",
+      "fieldIds": [
+        "skill_habitat_engineering", "skill_jackobot_operation", "skill_docbot_operation",
+        "skill_transbot_operation", "skill_scrubot_operation",
+        "skill_vulturecraft_operation", "skill_autocar_operation"
+      ]
+    },
+    {
+      "sectionId": "skills-moxie",
+      "label": "Moxie Skills",
+      "fieldIds": [
+        "skill_biochemical_therapy", "skill_biosciences", "skill_chemical_engineering",
+        "skill_data_analysis", "skill_data_search", "skill_demolition",
+        "skill_electronic_engineering", "skill_mechanical_engineering", "skill_medical",
+        "skill_nuclear_engineering", "skill_old_reckoning_cultures",
+        "skill_security", "skill_stealth", "skill_surveillance", "skill_survival"
+      ]
+    },
+    {
+      "sectionId": "weapons-armour",
+      "label": "Weapons & Armour",
+      "fieldIds": [
+        "weapon1_name", "weapon1_type", "weapon1_damage", "weapon1_range", "weapon1_experimental",
+        "weapon2_name", "weapon2_type", "weapon2_damage", "weapon2_range", "weapon2_experimental",
+        "weapon3_name", "weapon3_type", "weapon3_damage", "weapon3_range", "weapon3_experimental",
+        "weapon4_name", "weapon4_type", "weapon4_damage", "weapon4_range", "weapon4_experimental",
+        "weapon5_name", "weapon5_type", "weapon5_damage", "weapon5_range", "weapon5_experimental",
+        "armour_worn", "armour_rating"
+      ]
+    },
+    {
+      "sectionId": "equipment",
+      "label": "Equipment",
+      "fieldIds": ["credits", "equipment_notes"]
+    },
+    {
+      "sectionId": "secret-mutation",
+      "label": "Secret Mutation",
+      "fieldIds": ["mutationRoll", "mutationName", "mutation_notes"],
+      "hidden": true
+    },
+    {
+      "sectionId": "secret-society",
+      "label": "Secret Society",
+      "fieldIds": ["societyRoll", "primarySociety", "coverSocietyRoll", "coverSociety", "society_notes"],
+      "hidden": true
+    },
+    {
+      "sectionId": "notes",
+      "label": "Notes",
+      "fieldIds": ["public_notes"]
+    }
+  ],
+
+  "specialRules": ["paranoia-two-page", "paranoia-intsec-mole"],
+
+  "theme": {
+    "accentColor": "#c41e1e",
+    "flavorClass": "theme-paranoia",
+    "dieType": "d6"
+  }
+}

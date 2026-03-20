@@ -1,0 +1,294 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://rpg-sheet-generator/contracts/TEMPLATE.schema.json",
+  "title": "RPG Character Sheet System Contract",
+  "description": "Validation schema for all game system schemas produced by the Game Rule Research Agent. Every {system}.schema.json must validate against this template before handoff to the Designer or Code Writer Agent.",
+  "type": "object",
+  "required": ["systemId", "systemName", "version", "creationSteps", "sheetSections", "theme"],
+  "additionalProperties": false,
+
+  "properties": {
+
+    "systemId": {
+      "$comment": "Machine-friendly identifier. Lowercase, hyphens only. Used in file paths, routes, and CSS class names.",
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
+      "examples": ["paranoia-2e", "dnd-5e-2024", "wfrp-4e"]
+    },
+
+    "systemName": {
+      "$comment": "Human-readable display name shown in the UI.",
+      "type": "string",
+      "minLength": 1,
+      "examples": ["Paranoia 2nd Edition", "D&D 5e (2024)", "Warhammer Fantasy Roleplay 4e"]
+    },
+
+    "version": {
+      "$comment": "Schema version in semver format. Increment on any breaking change to field ids or types.",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "examples": ["1.0.0"]
+    },
+
+    "creationSteps": {
+      "$comment": "Ordered list of steps in the character creation wizard. Each step maps to one screen in the stepper UI.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["stepId", "label", "fields"],
+        "additionalProperties": false,
+        "properties": {
+
+          "stepId": {
+            "$comment": "Unique identifier for this step. Used in routing and test selectors.",
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "examples": ["attributes", "race-class", "skills", "equipment"]
+          },
+
+          "label": {
+            "$comment": "Display label shown in the wizard progress bar.",
+            "type": "string",
+            "minLength": 1
+          },
+
+          "description": {
+            "$comment": "Optional flavour text shown at the top of the step. Can include game-specific context.",
+            "type": "string"
+          },
+
+          "fields": {
+            "$comment": "Ordered list of fields on this step. Order determines render order in the UI.",
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/definitions/field" }
+          }
+        }
+      }
+    },
+
+    "sheetSections": {
+      "$comment": "Defines how fields are grouped in the Full Sheet View (as opposed to the creation wizard). Order determines section render order.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["sectionId", "label", "fieldIds"],
+        "additionalProperties": false,
+        "properties": {
+
+          "sectionId": {
+            "$comment": "Unique identifier for this sheet section.",
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "examples": ["core-stats", "skills", "equipment", "secrets"]
+          },
+
+          "label": {
+            "$comment": "Section heading shown on the full sheet.",
+            "type": "string"
+          },
+
+          "fieldIds": {
+            "$comment": "References to field ids defined in creationSteps. All ids must resolve. A field can appear in one section only.",
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" },
+            "uniqueItems": true
+          },
+
+          "hidden": {
+            "$comment": "If true, this section is hidden from the default sheet view and requires explicit user action to reveal (e.g. Paranoia secret page). Default: false.",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+
+    "specialRules": {
+      "$comment": "Named special mechanics that require custom UI behaviour beyond the standard field types. The Code Writer Agent must handle each named rule explicitly.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "paranoia-two-page",
+          "dnd-point-buy",
+          "dnd-standard-array",
+          "dnd-multiclass",
+          "wfrp-career-trappings",
+          "wfrp-fate-fortune"
+        ]
+      },
+      "uniqueItems": true,
+      "$comment": "Add new values to the enum here when new special mechanics are identified."
+    },
+
+    "theme": {
+      "$comment": "Visual identity overrides for this system. Maps to the Tailwind theme extension at /src/themes/{systemId}.ts.",
+      "type": "object",
+      "required": ["accentColor", "flavorClass", "dieType"],
+      "additionalProperties": false,
+      "properties": {
+
+        "accentColor": {
+          "$comment": "Primary accent hex colour for this system. Used for interactive elements, borders, highlights.",
+          "type": "string",
+          "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+          "examples": ["#c41e1e", "#c9a84c", "#8b7242"]
+        },
+
+        "accentColorMuted": {
+          "$comment": "Optional softer variant of the accent for backgrounds, badges. Derived from accentColor if omitted.",
+          "type": "string",
+          "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"
+        },
+
+        "flavorClass": {
+          "$comment": "Tailwind theme name defined in /src/themes/{systemId}.ts. Applied as a CSS class on the root sheet element to scope system-specific styles.",
+          "type": "string",
+          "pattern": "^theme-[a-z0-9-]+$",
+          "examples": ["theme-paranoia", "theme-dnd5e", "theme-wfrp"]
+        },
+
+        "dieType": {
+          "$comment": "Which die SVG to use for the dice roller icon on this system's sheets.",
+          "type": "string",
+          "enum": ["d4", "d6", "d8", "d10", "d12", "d20", "d100"],
+          "examples": ["d6", "d20"]
+        }
+      }
+    }
+  },
+
+  "definitions": {
+
+    "field": {
+      "$comment": "A single input field within a creation step. The type property determines which other properties are required.",
+      "type": "object",
+      "required": ["id", "label", "type"],
+      "additionalProperties": false,
+      "properties": {
+
+        "id": {
+          "$comment": "Unique identifier for this field across the entire schema. Used in dependsOn references, test selectors, and character data keys.",
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9_]*$",
+          "examples": ["strength", "hitPoints", "serviceGroup", "characterName"]
+        },
+
+        "label": {
+          "$comment": "Display label shown next to the field in the UI.",
+          "type": "string",
+          "minLength": 1
+        },
+
+        "type": {
+          "$comment": "Field render type. Determines which component renders this field and which additional properties apply.",
+          "type": "string",
+          "enum": ["roll", "dropdown", "text", "textarea", "calculated", "checkbox", "pointAlloc"]
+        },
+
+        "rollFormula": {
+          "$comment": "Dice formula string. Required when type is 'roll'. Uses dice notation: NdS[kh/kl N][+/-N]. Examples: '3d6', '4d6kh3', '1d6+2'.",
+          "type": "string",
+          "pattern": "^[0-9]+d[0-9]+(k[hl][0-9]+)?([-+][0-9]+)?$",
+          "examples": ["3d6", "4d6kh3", "1d8", "1d6+2"]
+        },
+
+        "options": {
+          "$comment": "List of options for dropdown fields. Required when type is 'dropdown'. Each option has a value (stored in character data) and a label (shown in UI).",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["value", "label"],
+            "additionalProperties": false,
+            "properties": {
+              "value": { "type": "string" },
+              "label": { "type": "string" },
+              "description": {
+                "$comment": "Optional tooltip or flavour text shown when option is hovered or selected.",
+                "type": "string"
+              }
+            }
+          }
+        },
+
+        "dependsOn": {
+          "$comment": "List of field ids whose values this field's value derives from. All ids must reference fields defined earlier in the schema (forward references not allowed). Required when type is 'calculated'.",
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+
+        "derivation": {
+          "$comment": "Name of the TypeScript function in creation-rules.ts that computes this field's value from its dependsOn fields. Required when type is 'calculated'. Must exactly match an exported function name.",
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9]*$",
+          "examples": ["calcAbilityModifier", "calcHitPoints", "calcCarryingCapacity"]
+        },
+
+        "pool": {
+          "$comment": "Total points available for allocation. Required when type is 'pointAlloc'.",
+          "type": "integer",
+          "minimum": 1
+        },
+
+        "minValue": {
+          "$comment": "Minimum allowed value. Applies to roll, calculated, and pointAlloc fields.",
+          "type": "integer"
+        },
+
+        "maxValue": {
+          "$comment": "Maximum allowed value. Applies to roll, calculated, and pointAlloc fields.",
+          "type": "integer"
+        },
+
+        "defaultValue": {
+          "$comment": "Optional default value pre-filled in the field before user interaction.",
+          "type": ["string", "number", "boolean"]
+        },
+
+        "placeholder": {
+          "$comment": "Placeholder text for text and textarea fields.",
+          "type": "string"
+        },
+
+        "notes": {
+          "$comment": "Rule clarifications, edge cases, or implementation notes for the Code Writer Agent. Not shown in UI.",
+          "type": "string"
+        },
+
+        "group": {
+          "$comment": "Optional grouping label for visual clustering within a step (e.g. 'Physical Attributes', 'Mental Attributes'). Fields with the same group value are rendered together.",
+          "type": "string"
+        }
+      },
+
+      "allOf": [
+        {
+          "$comment": "roll type: rollFormula is required",
+          "if": { "properties": { "type": { "const": "roll" } }, "required": ["type"] },
+          "then": { "required": ["rollFormula"] }
+        },
+        {
+          "$comment": "dropdown type: options is required",
+          "if": { "properties": { "type": { "const": "dropdown" } }, "required": ["type"] },
+          "then": { "required": ["options"] }
+        },
+        {
+          "$comment": "calculated type: derivation and dependsOn are required",
+          "if": { "properties": { "type": { "const": "calculated" } }, "required": ["type"] },
+          "then": { "required": ["derivation", "dependsOn"] }
+        },
+        {
+          "$comment": "pointAlloc type: pool is required",
+          "if": { "properties": { "type": { "const": "pointAlloc" } }, "required": ["type"] },
+          "then": { "required": ["pool"] }
+        }
+      ]
+    }
+  }
+}

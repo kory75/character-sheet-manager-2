@@ -1,0 +1,131 @@
+{
+  "$comment": "Example of a valid, minimal game system schema. Validates against TEMPLATE.schema.json. This is NOT a real game system — it illustrates one field of each type.",
+
+  "systemId": "example-rpg",
+  "systemName": "Example RPG",
+  "version": "1.0.0",
+
+  "creationSteps": [
+    {
+      "stepId": "identity",
+      "label": "Identity",
+      "description": "Who is your character?",
+      "fields": [
+        {
+          "id": "characterName",
+          "label": "Character Name",
+          "type": "text",
+          "placeholder": "Enter a name..."
+        },
+        {
+          "id": "species",
+          "label": "Species",
+          "type": "dropdown",
+          "options": [
+            { "value": "human",  "label": "Human",  "description": "Adaptable and ambitious." },
+            { "value": "elf",    "label": "Elf",    "description": "Graceful and long-lived." },
+            { "value": "dwarf",  "label": "Dwarf",  "description": "Sturdy and steadfast." }
+          ]
+        }
+      ]
+    },
+    {
+      "stepId": "attributes",
+      "label": "Attributes",
+      "description": "Roll or assign your core attributes.",
+      "fields": [
+        {
+          "id": "strength",
+          "label": "Strength",
+          "type": "roll",
+          "rollFormula": "3d6",
+          "minValue": 3,
+          "maxValue": 18,
+          "group": "Physical"
+        },
+        {
+          "id": "agility",
+          "label": "Agility",
+          "type": "roll",
+          "rollFormula": "3d6",
+          "minValue": 3,
+          "maxValue": 18,
+          "group": "Physical"
+        },
+        {
+          "id": "strengthModifier",
+          "label": "STR Modifier",
+          "type": "calculated",
+          "dependsOn": ["strength"],
+          "derivation": "calcAbilityModifier",
+          "notes": "Standard modifier formula: floor((score - 10) / 2)"
+        }
+      ]
+    },
+    {
+      "stepId": "skills",
+      "label": "Skills",
+      "description": "Distribute your skill points.",
+      "fields": [
+        {
+          "id": "skillPoints",
+          "label": "Skill Points",
+          "type": "pointAlloc",
+          "pool": 20,
+          "minValue": 0,
+          "maxValue": 10
+        },
+        {
+          "id": "stealth",
+          "label": "Stealth",
+          "type": "checkbox",
+          "notes": "Trained / untrained toggle"
+        }
+      ]
+    },
+    {
+      "stepId": "background",
+      "label": "Background",
+      "description": "Give your character a history.",
+      "fields": [
+        {
+          "id": "backstory",
+          "label": "Backstory",
+          "type": "textarea",
+          "placeholder": "Describe your character's history..."
+        }
+      ]
+    }
+  ],
+
+  "sheetSections": [
+    {
+      "sectionId": "identity",
+      "label": "Identity",
+      "fieldIds": ["characterName", "species"]
+    },
+    {
+      "sectionId": "attributes",
+      "label": "Attributes",
+      "fieldIds": ["strength", "agility", "strengthModifier"]
+    },
+    {
+      "sectionId": "skills",
+      "label": "Skills",
+      "fieldIds": ["skillPoints", "stealth"]
+    },
+    {
+      "sectionId": "background",
+      "label": "Background",
+      "fieldIds": ["backstory"]
+    }
+  ],
+
+  "specialRules": [],
+
+  "theme": {
+    "accentColor": "#4a90d9",
+    "flavorClass": "theme-example-rpg",
+    "dieType": "d6"
+  }
+}

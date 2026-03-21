@@ -23,6 +23,88 @@ html, body {
 }
 
 /* ══════════════════════════════════════════════════════════════
+   D&D 5E 2024 — "The Relic Ledger" THEME
+   Scope: .theme-dnd5e — overrides Tailwind CSS variables
+   ══════════════════════════════════════════════════════════════ */
+
+.theme-dnd5e {
+  --color-surface:                   #0d131e;
+  --color-surface-container-lowest:  #080e19;
+  --color-surface-container-low:     #161c27;
+  --color-surface-container:         #1a202b;
+  --color-surface-container-high:    #242a36;
+  --color-surface-container-highest: #2f3541;
+  --color-primary:                   #e6c364;
+  --color-primary-container:         #c9a84c;
+  --color-on-surface:                #dde2f2;
+  --color-on-surface-variant:        #d0c5b2;
+  --color-tertiary:                  #d1c5b2;
+  --color-outline-variant:           #4d4637;
+  --color-outline:                   #99907e;
+  --color-background:                #0d131e;
+  --font-headline: "Cinzel", serif;
+
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: "Inter", sans-serif;
+}
+
+/* Diamond lozenge divider — gold gradient line + centred rotated square */
+.dnd-divider {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #c9a84c 50%, transparent 100%);
+  opacity: 0.5;
+  margin: 1rem 0;
+}
+.dnd-divider::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 7px;
+  height: 7px;
+  background: #e6c364;
+  border: 1px solid #1a202b;
+}
+
+/* Stat box — surface-container-highest background + gold left bar */
+.dnd-stat-box {
+  position: relative;
+  background: #2f3541;
+  border-left: 2px solid #e6c364;
+}
+
+/* Card — surface-container-low background, position:relative for flourishes */
+.dnd-card {
+  position: relative;
+  background: #161c27;
+}
+
+/* Gold bar — 2px solid gold left border used on section headers */
+.dnd-gold-bar {
+  border-left: 2px solid var(--color-primary, #e6c364);
+  padding-left: 0.5rem;
+}
+
+/* Corner flourishes for major containers */
+.dnd-flourish-tl,
+.dnd-flourish-tr,
+.dnd-flourish-bl,
+.dnd-flourish-br {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: #e6c364;
+  opacity: 0.3;
+}
+.dnd-flourish-tl { top: 4px; left: 4px;     border-top: 1px solid; border-left: 1px solid;   }
+.dnd-flourish-tr { top: 4px; right: 4px;    border-top: 1px solid; border-right: 1px solid;  }
+.dnd-flourish-bl { bottom: 4px; left: 4px;  border-bottom: 1px solid; border-left: 1px solid; }
+.dnd-flourish-br { bottom: 4px; right: 4px; border-bottom: 1px solid; border-right: 1px solid;}
+
+/* ══════════════════════════════════════════════════════════════
    PRINT STYLESHEET
    ══════════════════════════════════════════════════════════════ */
 @media print {
@@ -110,5 +192,96 @@ html, body {
     max-width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
+  }
+
+  /* ── D&D 5e print overrides ────────────────────────────────────────────
+     The dark fantasy theme uses gold, light parchment, and navy tones that
+     are unreadable on white paper. This block converts everything to dark ink.
+     ─────────────────────────────────────────────────────────────────────── */
+
+  /* Override all D&D CSS variables to dark-on-white values */
+  .theme-dnd5e {
+    --color-primary:                   #1a2340;
+    --color-primary-container:         #1a2340;
+    --color-on-surface:                #111111;
+    --color-on-surface-variant:        #333333;
+    --color-tertiary:                  #555555;
+    --color-outline-variant:           #cccccc;
+    --color-outline:                   #999999;
+  }
+
+  /* Force ALL text inside the D&D sheet to dark ink.
+     This catches inline style="color: #e6c364" and CSS-variable-driven colors. */
+  .theme-dnd5e,
+  .theme-dnd5e * {
+    color: #111111 !important;
+  }
+
+  /* Section headers (font-headline / Cinzel) get dark navy instead of pure black
+     so they remain visually distinct from body values */
+  .theme-dnd5e .dnd-gold-bar,
+  .theme-dnd5e h1,
+  .theme-dnd5e h2,
+  .theme-dnd5e h3 {
+    color: #1a2340 !important;
+  }
+
+  /* Hide diamond dividers — they add visual noise and waste space on paper */
+  .dnd-divider {
+    display: none !important;
+  }
+
+  /* Stat boxes — light grey background, dark navy left bar */
+  .dnd-stat-box {
+    background: #f2f2f2 !important;
+    border-left-color: #1a2340 !important;
+  }
+
+  /* Cards — very light grey so they're distinguishable from the page */
+  .dnd-card {
+    background: #f8f8f8 !important;
+  }
+
+  /* Gold bar left borders → dark navy */
+  .dnd-gold-bar {
+    border-left-color: #1a2340 !important;
+  }
+
+  /* Corner flourishes — decorative only, hide in print */
+  .dnd-flourish-tl,
+  .dnd-flourish-tr,
+  .dnd-flourish-bl,
+  .dnd-flourish-br {
+    display: none !important;
+  }
+
+  /* Dragon watermark — hide in print */
+  .dnd-watermark {
+    display: none !important;
+  }
+
+  /* 1. Identity fields — horizontal 3-column grid instead of vertical stack */
+  .dnd-identity-fields {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.25rem 1.5rem !important;
+    /* The dividers inside are already hidden by .dnd-divider { display:none } above */
+  }
+
+  /* 2. Combat Overview + Saving Throws — side by side, saves left / combat right */
+  .dnd-combat-saves-group {
+    display: flex !important;
+    flex-direction: row-reverse !important; /* combat right, saves left */
+    align-items: flex-start !important;
+    gap: 0 !important;
+  }
+  .dnd-combat-saves-group > * {
+    flex: 1 !important;
+    width: 50% !important;
+  }
+
+  /* 4. Ability scores — 3 columns in print (was 2 on small screens) */
+  .dnd-ability-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 }

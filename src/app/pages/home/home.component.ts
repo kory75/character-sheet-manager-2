@@ -15,6 +15,7 @@ interface SynthesizerCard {
   flavour: string;
   accentColor: string;
   route: string | null;
+  experimental?: boolean;
 }
 
 const DOSSIER_CARDS: DossierCard[] = [
@@ -39,8 +40,9 @@ const SYNTHESIZER_CARDS: SynthesizerCard[] = [
     edition: '5TH EDITION',
     icon: 'auto_awesome',
     flavour: 'Roll your hero. Race, class, background, ability scores, and starting equipment.',
-    accentColor: '#fa8840',
-    route: null,
+    accentColor: '#e6c364',
+    route: '/dnd',
+    experimental: true,
   },
   {
     system: 'WARHAMMER FANTASY',
@@ -218,10 +220,18 @@ const SYNTHESIZER_CARDS: SynthesizerCard[] = [
                 [style]="'border-bottom:1px solid ' + card.accentColor + '; border-right:1px solid ' + card.accentColor + ';'"
               ></span>
 
-              <!-- Icon -->
-              <span class="material-symbols-outlined text-4xl" [style.color]="card.accentColor">
-                {{ card.icon }}
-              </span>
+              <!-- Icon + experimental badge -->
+              <div class="flex items-start justify-between">
+                <span class="material-symbols-outlined text-4xl" [style.color]="card.accentColor">
+                  {{ card.icon }}
+                </span>
+                @if (card.experimental) {
+                  <span class="text-[9px] font-bold tracking-[0.15em] px-2 py-0.5 uppercase"
+                        style="background: rgba(230,195,100,0.12); color: #e6c364; border: 1px solid rgba(230,195,100,0.35);">
+                    EXPERIMENTAL
+                  </span>
+                }
+              </div>
 
               <!-- System name + edition -->
               <div>

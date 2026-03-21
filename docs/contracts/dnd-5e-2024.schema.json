@@ -1,0 +1,1537 @@
+{
+  "systemId": "dnd-5e-2024",
+  "systemName": "D&D 5e (2024)",
+  "version": "1.0.0",
+
+  "creationSteps": [
+
+    {
+      "stepId": "identity",
+      "label": "Identity",
+      "description": "Start by recording the basics: who is your character, who is playing them, and where are they in their adventuring career?",
+      "fields": [
+        {
+          "id": "characterName",
+          "label": "Character Name",
+          "type": "text",
+          "placeholder": "Enter your character's name..."
+        },
+        {
+          "id": "playerName",
+          "label": "Player Name",
+          "type": "text",
+          "placeholder": "Enter your real name..."
+        },
+        {
+          "id": "characterLevel",
+          "label": "Character Level",
+          "type": "dropdown",
+          "defaultValue": "1",
+          "options": [
+            { "value": "1",  "label": "Level 1" },
+            { "value": "2",  "label": "Level 2" },
+            { "value": "3",  "label": "Level 3" },
+            { "value": "4",  "label": "Level 4" },
+            { "value": "5",  "label": "Level 5" },
+            { "value": "6",  "label": "Level 6" },
+            { "value": "7",  "label": "Level 7" },
+            { "value": "8",  "label": "Level 8" },
+            { "value": "9",  "label": "Level 9" },
+            { "value": "10", "label": "Level 10" },
+            { "value": "11", "label": "Level 11" },
+            { "value": "12", "label": "Level 12" },
+            { "value": "13", "label": "Level 13" },
+            { "value": "14", "label": "Level 14" },
+            { "value": "15", "label": "Level 15" },
+            { "value": "16", "label": "Level 16" },
+            { "value": "17", "label": "Level 17" },
+            { "value": "18", "label": "Level 18" },
+            { "value": "19", "label": "Level 19" },
+            { "value": "20", "label": "Level 20" }
+          ]
+        },
+        {
+          "id": "experiencePoints",
+          "label": "Experience Points",
+          "type": "text",
+          "defaultValue": "0",
+          "placeholder": "0",
+          "notes": "Total XP earned. Milestone leveling games may leave this blank."
+        },
+        {
+          "id": "background",
+          "label": "Background",
+          "type": "dropdown",
+          "options": [
+            {
+              "value": "acolyte",
+              "label": "Acolyte",
+              "description": "You have spent your life in service to a temple. Skill Proficiencies: Insight, Religion. Languages: Two of your choice. Feat: Magic Initiate (Cleric)."
+            },
+            {
+              "value": "artisan",
+              "label": "Artisan",
+              "description": "You are trained in a particular artisan's craft. Skill Proficiencies: Investigation, Persuasion. Tool Proficiency: One Artisan's Tools of your choice. Languages: One of your choice. Feat: Crafter."
+            },
+            {
+              "value": "charlatan",
+              "label": "Charlatan",
+              "description": "You always had a way with people, bending the truth to your advantage. Skill Proficiencies: Deception, Sleight of Hand. Tool Proficiency: Forgery Kit. Languages: One of your choice. Feat: Skilled."
+            },
+            {
+              "value": "criminal",
+              "label": "Criminal",
+              "description": "You are an experienced criminal with a history of breaking the law. Skill Proficiencies: Sleight of Hand, Stealth. Tool Proficiency: Thieves' Tools. Languages: One of your choice. Feat: Alert."
+            },
+            {
+              "value": "entertainer",
+              "label": "Entertainer",
+              "description": "You thrive in front of an audience. Skill Proficiencies: Acrobatics, Performance. Tool Proficiency: Musical Instrument of your choice. Languages: One of your choice. Feat: Musician."
+            },
+            {
+              "value": "farmer",
+              "label": "Farmer",
+              "description": "You grew up close to the land, learning the ways of agriculture and animal husbandry. Skill Proficiencies: Animal Handling, Nature. Tool Proficiency: Carpenter's Tools. Languages: One of your choice. Feat: Tough."
+            },
+            {
+              "value": "guard",
+              "label": "Guard",
+              "description": "You served as a guard, patrol officer, or soldier in a town or city. Skill Proficiencies: Athletics, Perception. Tool Proficiency: Gaming Set of your choice. Languages: One of your choice. Feat: Alert."
+            },
+            {
+              "value": "guide",
+              "label": "Guide",
+              "description": "You grew up in the wilderness, learning to survive far from civilization. Skill Proficiencies: Stealth, Survival. Tool Proficiency: Cartographer's Tools. Languages: One of your choice. Feat: Musician."
+            },
+            {
+              "value": "hermit",
+              "label": "Hermit",
+              "description": "You lived in seclusion for a long period of time. Skill Proficiencies: Medicine, Religion. Tool Proficiency: Herbalism Kit. Languages: One of your choice. Feat: Magic Initiate (Druid)."
+            },
+            {
+              "value": "merchant",
+              "label": "Merchant",
+              "description": "You worked in commerce, buying and selling goods across the land. Skill Proficiencies: Animal Handling, Persuasion. Tool Proficiency: Navigator's Tools. Languages: One of your choice. Feat: Lucky."
+            },
+            {
+              "value": "noble",
+              "label": "Noble",
+              "description": "You understand wealth, power, and privilege. Skill Proficiencies: History, Persuasion. Tool Proficiency: Gaming Set of your choice. Languages: One of your choice. Feat: Skilled."
+            },
+            {
+              "value": "sailor",
+              "label": "Sailor",
+              "description": "You sailed on a seagoing vessel for years. Skill Proficiencies: Acrobatics, Perception. Tool Proficiency: Navigator's Tools. Languages: One of your choice. Feat: Tavern Brawler."
+            },
+            {
+              "value": "sage",
+              "label": "Sage",
+              "description": "You spent years learning the lore of the multiverse. Skill Proficiencies: Arcana, History. Languages: Two of your choice. Feat: Magic Initiate (Wizard)."
+            },
+            {
+              "value": "scribe",
+              "label": "Scribe",
+              "description": "You spent years as a clerk or copyist. Skill Proficiencies: Investigation, Perception. Tool Proficiency: Calligrapher's Supplies. Languages: One of your choice. Feat: Skilled."
+            },
+            {
+              "value": "soldier",
+              "label": "Soldier",
+              "description": "War has been your life for as long as you care to remember. Skill Proficiencies: Athletics, Intimidation. Tool Proficiency: Gaming Set of your choice. Languages: One of your choice. Feat: Savage Attacker."
+            },
+            {
+              "value": "wayfarer",
+              "label": "Wayfarer",
+              "description": "You grew up on the road, traveling from place to place without a fixed home. Skill Proficiencies: Insight, Stealth. Tool Proficiency: Thieves' Tools. Languages: One of your choice. Feat: Lucky."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "stepId": "species",
+      "label": "Species",
+      "description": "Choose your character's species. Each species grants unique traits that persist throughout your adventuring career. Source: PHB 2024.",
+      "fields": [
+        {
+          "id": "species",
+          "label": "Species",
+          "type": "dropdown",
+          "options": [
+            {
+              "value": "aasimar",
+              "label": "Aasimar",
+              "description": "Blessed with a touch of the divine, aasimar carry a spark of celestial power. Traits: Darkvision 60 ft., Celestial Resistance (necrotic and radiant), Healing Hands, Light Bearer. At level 3 choose a Transformation: Heavenly Wings, Inner Radiance, or Necrotic Shroud."
+            },
+            {
+              "value": "dragonborn",
+              "label": "Dragonborn",
+              "description": "Born of dragon lineage, dragonborn carry draconic gifts. Choose an Ancestor from the 10 dragon types. Traits: Draconic Ancestry (damage type), Breath Weapon (Dex save, scales with level), Damage Resistance (matching ancestry), Darkvision 60 ft."
+            },
+            {
+              "value": "dwarf",
+              "label": "Dwarf",
+              "description": "Stout and sturdy denizens of mountain halls and subterranean cities. Traits: Darkvision 120 ft., Dwarven Resilience (poison resistance and Adv. on poison saves), Dwarven Toughness (+1 HP per level), Stonecunning (Tremorsense 60 ft. for 10 min via Bonus Action)."
+            },
+            {
+              "value": "elf",
+              "label": "Elf",
+              "description": "Long-lived and magical, elves embody grace and ancient power. Choose a lineage: Drow, High Elf, or Wood Elf. Traits: Darkvision 60 ft., Fey Ancestry (Adv. vs. Charmed, immune to magic sleep), Keen Senses (Perception proficiency), Trance (rest in 4 hours), Lineage trait."
+            },
+            {
+              "value": "gnome",
+              "label": "Gnome",
+              "description": "Small and clever, gnomes delight in invention and magic. Choose a lineage: Forest Gnome or Rock Gnome. Traits: Darkvision 60 ft., Gnomish Cunning (Adv. on Int/Wis/Cha saves vs. magic), Lineage trait."
+            },
+            {
+              "value": "goliath",
+              "label": "Goliath",
+              "description": "Towering wanderers of mountain peaks, goliaths are imbued with elemental power. Choose a Giant Ancestor (Cloud, Fire, Frost, Hill, Stone, or Storm). Traits: Large Form (can be Large size, once per long rest), Powerful Build (counts as one size larger for carry), Giant Ancestry power."
+            },
+            {
+              "value": "halfling",
+              "label": "Halfling",
+              "description": "Small in stature but great in spirit, halflings exhibit remarkable luck. Traits: Lucky (reroll 1s on attack rolls, ability checks, saves), Brave (Adv. on saves vs. Frightened), Halfling Nimbleness (move through larger creatures' spaces), Naturally Stealthy (can hide behind larger creatures)."
+            },
+            {
+              "value": "human",
+              "label": "Human",
+              "description": "Versatile and ambitious, humans are the most widespread species in many worlds. Traits: Resourceful (Heroic Inspiration after long rest), Skillful (one skill proficiency), Versatile (one Origin feat)."
+            },
+            {
+              "value": "orc",
+              "label": "Orc",
+              "description": "Resilient and powerful warriors shaped by the divine forge of Gruumsh. Traits: Darkvision 120 ft., Adrenaline Rush (Bonus Action Dash, gain temp HP equal to proficiency bonus; usable = proficiency bonus / long rest), Relentless Endurance (drop to 1 HP instead of 0, once per long rest), Powerful Build."
+            },
+            {
+              "value": "tiefling",
+              "label": "Tiefling",
+              "description": "Carrying infernal heritage, tieflings wield fiendish gifts. Choose a Fiendish Legacy: Abyssal, Chthonic, or Infernal. Traits: Darkvision 60 ft., Fiendish Legacy (resistance and spells by legacy type), Otherworldly Presence (Thaumaturgy cantrip)."
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "stepId": "class",
+      "label": "Class",
+      "description": "Choose your character's class and, at level 3 or above, your subclass. Your class defines your primary combat style, hit points, and abilities.",
+      "fields": [
+        {
+          "id": "characterClass",
+          "label": "Class",
+          "type": "dropdown",
+          "options": [
+            {
+              "value": "barbarian",
+              "label": "Barbarian",
+              "description": "A fierce warrior who channels primal fury. Hit Die: d12. Primary Ability: Strength. Armor: Light, Medium, Shields. Weapons: Simple, Martial. Saving Throws: Strength, Constitution."
+            },
+            {
+              "value": "bard",
+              "label": "Bard",
+              "description": "An inspiring performer whose magic flows from artistic ability. Hit Die: d8. Primary Ability: Charisma. Armor: Light. Weapons: Simple. Saving Throws: Dexterity, Charisma."
+            },
+            {
+              "value": "cleric",
+              "label": "Cleric",
+              "description": "A priestly champion who wields divine power in service of a deity. Hit Die: d8. Primary Ability: Wisdom. Armor: Light, Medium, Shields. Weapons: Simple. Saving Throws: Wisdom, Charisma."
+            },
+            {
+              "value": "druid",
+              "label": "Druid",
+              "description": "A priest of the Old Faith who wields the primal magic of nature. Hit Die: d8. Primary Ability: Wisdom. Armor: Light, Medium (non-metal), Shields (non-metal). Weapons: Simple (non-metal). Saving Throws: Intelligence, Wisdom."
+            },
+            {
+              "value": "fighter",
+              "label": "Fighter",
+              "description": "A master of martial combat, skilled with a variety of weapons and armor. Hit Die: d10. Primary Ability: Strength or Dexterity. Armor: All, Shields. Weapons: Simple, Martial. Saving Throws: Strength, Constitution."
+            },
+            {
+              "value": "monk",
+              "label": "Monk",
+              "description": "A master of martial arts who harnesses the power of ki. Hit Die: d8. Primary Ability: Dexterity and Wisdom. Armor: None. Weapons: Simple, Shortswords. Saving Throws: Strength, Dexterity."
+            },
+            {
+              "value": "paladin",
+              "label": "Paladin",
+              "description": "A holy warrior bound to a sacred oath. Hit Die: d10. Primary Ability: Strength and Charisma. Armor: All, Shields. Weapons: Simple, Martial. Saving Throws: Wisdom, Charisma."
+            },
+            {
+              "value": "ranger",
+              "label": "Ranger",
+              "description": "A warrior who combats threats at the edges of civilization. Hit Die: d10. Primary Ability: Dexterity and Wisdom. Armor: Light, Medium, Shields. Weapons: Simple, Martial. Saving Throws: Strength, Dexterity."
+            },
+            {
+              "value": "rogue",
+              "label": "Rogue",
+              "description": "A scoundrel who uses stealth and trickery to overcome obstacles. Hit Die: d8. Primary Ability: Dexterity. Armor: Light. Weapons: Simple, Hand Crossbow, Longsword, Rapier, Shortsword. Saving Throws: Dexterity, Intelligence."
+            },
+            {
+              "value": "sorcerer",
+              "label": "Sorcerer",
+              "description": "A spellcaster who draws on inherent magic from a gift or bloodline. Hit Die: d6. Primary Ability: Charisma. Armor: None. Weapons: Simple. Saving Throws: Constitution, Charisma."
+            },
+            {
+              "value": "warlock",
+              "label": "Warlock",
+              "description": "A wielder of magic derived from a bargain with an extraplanar entity. Hit Die: d8. Primary Ability: Charisma. Armor: Light. Weapons: Simple. Saving Throws: Wisdom, Charisma."
+            },
+            {
+              "value": "wizard",
+              "label": "Wizard",
+              "description": "A scholarly magic-user capable of manipulating the structures of spellcasting. Hit Die: d6. Primary Ability: Intelligence. Armor: None. Weapons: Simple. Saving Throws: Intelligence, Wisdom."
+            },
+            {
+              "value": "artificer",
+              "label": "Artificer",
+              "description": "A master of invention who uses magical items and infusions to enhance their abilities. Hit Die: d8. Primary Ability: Intelligence. Armor: Light, Medium, Shields. Weapons: Simple. Saving Throws: Constitution, Intelligence."
+            }
+          ]
+        },
+        {
+          "id": "subclass",
+          "label": "Subclass",
+          "type": "dropdown",
+          "notes": "Available at level 3 (or level 1 for Cleric, Sorcerer, Warlock in 2024 PHB). List covers all 2024 PHB subclasses per class.",
+          "options": [
+            { "value": "none",                         "label": "— None (select a class first) —" },
+            { "value": "barbarian-berserker",           "label": "Barbarian: Path of the Berserker",         "description": "Channel rage into ferocity, entering a Frenzy that allows extra attacks but risks exhaustion." },
+            { "value": "barbarian-totem-warrior",       "label": "Barbarian: Path of the Totem Warrior",     "description": "Draw on the spirit of an animal totem—Bear, Eagle, Elk, Tiger, or Wolf—for primal boons." },
+            { "value": "barbarian-wild-heart",          "label": "Barbarian: Path of the Wild Heart",        "description": "Commune with nature to gain bestial aspects and speak with animals." },
+            { "value": "barbarian-world-tree",          "label": "Barbarian: Path of the World Tree",        "description": "Draw on the power of Yggdrasil—the cosmic World Tree—to teleport and protect allies." },
+            { "value": "barbarian-zealot",              "label": "Barbarian: Path of the Zealot",            "description": "Channel divine fury; divine strikes deal extra radiant or necrotic damage and resist death." },
+            { "value": "bard-dance",                    "label": "Bard: College of Dance",                   "description": "Blend combat with interpretive dance and Bardic Inspiration into fluid movement." },
+            { "value": "bard-glamour",                  "label": "Bard: College of Glamour",                 "description": "Wield the beguiling magic of the Feywild to enthrall and manipulate." },
+            { "value": "bard-lore",                     "label": "Bard: College of Lore",                    "description": "Master a vast breadth of knowledge; acquire additional proficiencies and magical secrets." },
+            { "value": "bard-valor",                    "label": "Bard: College of Valor",                   "description": "Inspire armies on the battlefield; gain medium armor, shields, and martial weapons." },
+            { "value": "cleric-life",                   "label": "Cleric: Life Domain",                      "description": "Focus on vitality and healing; maximize healing spells and gain heavy armor proficiency." },
+            { "value": "cleric-light",                  "label": "Cleric: Light Domain",                     "description": "Serve a deity of light and truth; wield radiant fire to burn foes and protect allies." },
+            { "value": "cleric-trickery",               "label": "Cleric: Trickery Domain",                  "description": "Channel the power of deception; create duplicates and boost stealth." },
+            { "value": "cleric-war",                    "label": "Cleric: War Domain",                       "description": "Serve a war deity; martial strikes and extra attacks make you a fierce combatant." },
+            { "value": "cleric-knowledge",              "label": "Cleric: Knowledge Domain",                 "description": "Serve a deity of wisdom; gain proficiencies and read thoughts." },
+            { "value": "cleric-nature",                 "label": "Cleric: Nature Domain",                    "description": "Serve a deity of nature; channel the wild through charm and resistance." },
+            { "value": "cleric-tempest",                "label": "Cleric: Tempest Domain",                   "description": "Command storms and lightning; maximize thunder and lightning damage." },
+            { "value": "druid-land",                    "label": "Druid: Circle of the Land",                "description": "Draw power from a specific terrain; recover spell slots and gain bonus spells by biome." },
+            { "value": "druid-moon",                    "label": "Druid: Circle of the Moon",                "description": "Transform into powerful beasts including elementals; combat-focused Wild Shape." },
+            { "value": "druid-sea",                     "label": "Druid: Circle of the Sea",                 "description": "Channel the power of tides and storms; wield thunder and cold in your Wild Shape." },
+            { "value": "druid-stars",                   "label": "Druid: Circle of Stars",                   "description": "Chart the stars to gain celestial forms and healing power." },
+            { "value": "fighter-battle-master",         "label": "Fighter: Battle Master",                   "description": "Learn Combat Maneuvers powered by Superiority Dice to control the battlefield." },
+            { "value": "fighter-champion",              "label": "Fighter: Champion",                        "description": "Hone your martial skill to athletic perfection; extend critical hit range." },
+            { "value": "fighter-eldritch-knight",       "label": "Fighter: Eldritch Knight",                 "description": "Study wizard magic to augment combat with spells." },
+            { "value": "fighter-psi-warrior",           "label": "Fighter: Psi Warrior",                     "description": "Augment physical might with psionic power—telekinetic shoves and psionic shields." },
+            { "value": "monk-mercy",                    "label": "Monk: Warrior of Mercy",                   "description": "Heal allies and inflict debilitating conditions through precise strikes." },
+            { "value": "monk-open-hand",                "label": "Monk: Warrior of the Open Hand",           "description": "Master unarmed combat; knock back, prone, and deny reactions with Open Hand Technique." },
+            { "value": "monk-shadow",                   "label": "Monk: Warrior of Shadow",                  "description": "Channel ki into shadow magic; cast darkness and teleport through shadows." },
+            { "value": "monk-four-elements",            "label": "Monk: Warrior of the Four Elements",       "description": "Bend the four classical elements; spend ki to cast elemental spells." },
+            { "value": "paladin-devotion",              "label": "Paladin: Oath of Devotion",                "description": "Uphold the ideals of honor and chivalry; radiant strikes and protection auras." },
+            { "value": "paladin-glory",                 "label": "Paladin: Oath of Glory",                   "description": "Inspire companions to heroic deeds; gain athleticism and inspire allied saves." },
+            { "value": "paladin-ancients",              "label": "Paladin: Oath of the Ancients",            "description": "Protect the light and life of the world; nature spells and Aura of Warding." },
+            { "value": "paladin-vengeance",             "label": "Paladin: Oath of Vengeance",               "description": "Punish evil doers with relentless pursuit; Hold and banish foes." },
+            { "value": "ranger-beast-master",           "label": "Ranger: Beast Master",                     "description": "Form an extraordinary bond with a beast companion that fights beside you." },
+            { "value": "ranger-fey-wanderer",           "label": "Ranger: Fey Wanderer",                     "description": "Carry the beguiling and terrifying might of the Feywild within you." },
+            { "value": "ranger-gloom-stalker",          "label": "Ranger: Gloom Stalker",                    "description": "Master the darkness; bonus initiative, invisible to darkvision, fear strike." },
+            { "value": "ranger-hunter",                 "label": "Ranger: Hunter",                           "description": "Learn specialized Hunter's Prey and Defensive Tactics to dispatch any quarry." },
+            { "value": "rogue-arcane-trickster",        "label": "Rogue: Arcane Trickster",                  "description": "Study wizard magic to augment roguish skills with enchantment and illusion." },
+            { "value": "rogue-assassin",                "label": "Rogue: Assassin",                          "description": "Perfect the art of ambush and disguise; automatically score critical hit vs. surprised foes." },
+            { "value": "rogue-soulknife",               "label": "Rogue: Soulknife",                         "description": "Hone a psychic blade from the power of your mind; teleport and read thoughts." },
+            { "value": "rogue-thief",                   "label": "Rogue: Thief",                             "description": "Excel at stealth, sleight of hand, and the use of magic items." },
+            { "value": "sorcerer-aberrant-mind",        "label": "Sorcerer: Aberrant Mind",                  "description": "An alien influence has warped your magic; gain psionic spells and telepathy." },
+            { "value": "sorcerer-clockwork-soul",       "label": "Sorcerer: Clockwork Soul",                 "description": "Draw on forces of order from Mechanus; cancel advantage/disadvantage and boost saves." },
+            { "value": "sorcerer-draconic",             "label": "Sorcerer: Draconic Bloodline",             "description": "Draw on draconic heritage for elemental affinity, natural armor, and dragon wings." },
+            { "value": "sorcerer-wild-magic",           "label": "Sorcerer: Wild Magic",                     "description": "Unpredictable surges of magic; Wild Magic Surge table and Bend Luck." },
+            { "value": "warlock-archfey",               "label": "Warlock: Archfey Patron",                  "description": "Bargain with a lord of the Feywild for beguiling and illusory power." },
+            { "value": "warlock-fiend",                 "label": "Warlock: Fiend Patron",                    "description": "Serve a powerful devil or demon for destructive power and dark resilience." },
+            { "value": "warlock-great-old-one",         "label": "Warlock: Great Old One Patron",            "description": "Draw power from an alien entity of the Far Realm; telepathy and eldritch blasts." },
+            { "value": "warlock-celestial",             "label": "Warlock: Celestial Patron",                "description": "Make a pact with a celestial being; channel radiant power to heal and harm." },
+            { "value": "wizard-abjurer",                "label": "Wizard: School of Abjuration",             "description": "Master protective magic; strengthen abjuration spells and build arcane ward." },
+            { "value": "wizard-conjurer",               "label": "Wizard: School of Conjuration",            "description": "Master summoning and teleportation magic; conjure elements and creatures." },
+            { "value": "wizard-diviner",                "label": "Wizard: School of Divination",             "description": "Uncover secrets and futures; use Portent dice to replace any d20 roll." },
+            { "value": "wizard-enchanter",              "label": "Wizard: School of Enchantment",            "description": "Master mind-affecting magic; split Hypnotic Gaze and bend wills." },
+            { "value": "wizard-evoker",                 "label": "Wizard: School of Evocation",              "description": "Master destructive magic; sculpt spells to protect allies from blast damage." },
+            { "value": "wizard-illusionist",            "label": "Wizard: School of Illusion",               "description": "Master illusion magic; make illusions partially real and animate them." },
+            { "value": "artificer-alchemist",           "label": "Artificer: Alchemist",                     "description": "Create alchemical substances for healing and harm; experimental elixirs." },
+            { "value": "artificer-armorer",             "label": "Artificer: Armorer",                       "description": "Craft and integrate magical armor; choose Guardian or Infiltrator mode." },
+            { "value": "artificer-artillerist",         "label": "Artificer: Artillerist",                   "description": "Construct Eldritch Cannon to deal force, fire, or lightning damage." },
+            { "value": "artificer-battle-smith",        "label": "Artificer: Battle Smith",                  "description": "Craft a Steel Defender companion; use Intelligence for weapon attacks." }
+          ]
+        },
+        {
+          "id": "hitDie",
+          "label": "Hit Die",
+          "type": "calculated",
+          "derivation": "calcHitDieFromClass",
+          "dependsOn": ["characterClass"],
+          "notes": "Automatically set from the class selection. Barbarian=d12, Fighter/Paladin/Ranger=d10, most others=d8, Sorcerer/Wizard=d6."
+        }
+      ]
+    },
+
+    {
+      "stepId": "ability-scores",
+      "label": "Ability Scores",
+      "description": "Determine your six ability scores using your chosen method: Roll (4d6 drop lowest), Standard Array (15/14/13/12/10/8), or Point Buy (27 points, scores 8–15). Scores represent your raw potential before species and background bonuses.",
+      "fields": [
+        {
+          "id": "abilityScoreMethod",
+          "label": "Ability Score Method",
+          "type": "dropdown",
+          "defaultValue": "standard-array",
+          "options": [
+            { "value": "standard-array", "label": "Standard Array (15/14/13/12/10/8)", "description": "Assign the set values 15, 14, 13, 12, 10, and 8 to your six abilities in any order." },
+            { "value": "point-buy",      "label": "Point Buy (27 points)",              "description": "Spend 27 points to set scores from 8 to 15. Each score has a cost: 8=0, 9=1, 10=2, 11=3, 12=4, 13=5, 14=7, 15=9." },
+            { "value": "roll",           "label": "Roll (4d6 drop lowest)",             "description": "Roll 4d6 and drop the lowest die for each score. Accept the results or ask your DM about re-rolling." }
+          ]
+        },
+        {
+          "id": "strength",
+          "label": "Strength",
+          "type": "roll",
+          "rollFormula": "4d6kh3",
+          "minValue": 1,
+          "maxValue": 20,
+          "defaultValue": 10,
+          "group": "Ability Scores",
+          "notes": "Roll 4d6kh3 when using Roll method. For Standard Array or Point Buy, type value directly. Max 20 before magical enhancement."
+        },
+        {
+          "id": "dexterity",
+          "label": "Dexterity",
+          "type": "roll",
+          "rollFormula": "4d6kh3",
+          "minValue": 1,
+          "maxValue": 20,
+          "defaultValue": 10,
+          "group": "Ability Scores"
+        },
+        {
+          "id": "constitution",
+          "label": "Constitution",
+          "type": "roll",
+          "rollFormula": "4d6kh3",
+          "minValue": 1,
+          "maxValue": 20,
+          "defaultValue": 10,
+          "group": "Ability Scores"
+        },
+        {
+          "id": "intelligence",
+          "label": "Intelligence",
+          "type": "roll",
+          "rollFormula": "4d6kh3",
+          "minValue": 1,
+          "maxValue": 20,
+          "defaultValue": 10,
+          "group": "Ability Scores"
+        },
+        {
+          "id": "wisdom",
+          "label": "Wisdom",
+          "type": "roll",
+          "rollFormula": "4d6kh3",
+          "minValue": 1,
+          "maxValue": 20,
+          "defaultValue": 10,
+          "group": "Ability Scores"
+        },
+        {
+          "id": "charisma",
+          "label": "Charisma",
+          "type": "roll",
+          "rollFormula": "4d6kh3",
+          "minValue": 1,
+          "maxValue": 20,
+          "defaultValue": 10,
+          "group": "Ability Scores"
+        },
+        {
+          "id": "strengthMod",
+          "label": "STR Modifier",
+          "type": "calculated",
+          "derivation": "calcAbilityModifier",
+          "dependsOn": ["strength"],
+          "group": "Ability Modifiers",
+          "notes": "floor((strength - 10) / 2)"
+        },
+        {
+          "id": "dexterityMod",
+          "label": "DEX Modifier",
+          "type": "calculated",
+          "derivation": "calcAbilityModifier",
+          "dependsOn": ["dexterity"],
+          "group": "Ability Modifiers"
+        },
+        {
+          "id": "constitutionMod",
+          "label": "CON Modifier",
+          "type": "calculated",
+          "derivation": "calcAbilityModifier",
+          "dependsOn": ["constitution"],
+          "group": "Ability Modifiers"
+        },
+        {
+          "id": "intelligenceMod",
+          "label": "INT Modifier",
+          "type": "calculated",
+          "derivation": "calcAbilityModifier",
+          "dependsOn": ["intelligence"],
+          "group": "Ability Modifiers"
+        },
+        {
+          "id": "wisdomMod",
+          "label": "WIS Modifier",
+          "type": "calculated",
+          "derivation": "calcAbilityModifier",
+          "dependsOn": ["wisdom"],
+          "group": "Ability Modifiers"
+        },
+        {
+          "id": "charismaMod",
+          "label": "CHA Modifier",
+          "type": "calculated",
+          "derivation": "calcAbilityModifier",
+          "dependsOn": ["charisma"],
+          "group": "Ability Modifiers"
+        },
+        {
+          "id": "proficiencyBonus",
+          "label": "Proficiency Bonus",
+          "type": "calculated",
+          "derivation": "calcProficiencyBonus",
+          "dependsOn": ["characterLevel"],
+          "notes": "Level 1-4=+2, 5-8=+3, 9-12=+4, 13-16=+5, 17-20=+6. Source: PHB 2024 p.14."
+        }
+      ]
+    },
+
+    {
+      "stepId": "skills-proficiencies",
+      "label": "Skills & Proficiencies",
+      "description": "Mark skill and saving throw proficiencies granted by your class and background. Totals are calculated as ability modifier + proficiency bonus (if proficient).",
+      "fields": [
+        {
+          "id": "acrobaticsProf",
+          "label": "Acrobatics Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "DEX-based skill."
+        },
+        {
+          "id": "acrobaticsTotal",
+          "label": "Acrobatics",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["dexterityMod", "proficiencyBonus", "acrobaticsProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "animalHandlingProf",
+          "label": "Animal Handling Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "WIS-based skill."
+        },
+        {
+          "id": "animalHandlingTotal",
+          "label": "Animal Handling",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["wisdomMod", "proficiencyBonus", "animalHandlingProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "arcanaProf",
+          "label": "Arcana Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "INT-based skill."
+        },
+        {
+          "id": "arcanaTotal",
+          "label": "Arcana",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["intelligenceMod", "proficiencyBonus", "arcanaProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "athleticsProf",
+          "label": "Athletics Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "STR-based skill."
+        },
+        {
+          "id": "athleticsTotal",
+          "label": "Athletics",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["strengthMod", "proficiencyBonus", "athleticsProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "deceptionProf",
+          "label": "Deception Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "CHA-based skill."
+        },
+        {
+          "id": "deceptionTotal",
+          "label": "Deception",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["charismaMod", "proficiencyBonus", "deceptionProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "historyProf",
+          "label": "History Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "INT-based skill."
+        },
+        {
+          "id": "historyTotal",
+          "label": "History",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["intelligenceMod", "proficiencyBonus", "historyProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "insightProf",
+          "label": "Insight Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "WIS-based skill."
+        },
+        {
+          "id": "insightTotal",
+          "label": "Insight",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["wisdomMod", "proficiencyBonus", "insightProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "intimidationProf",
+          "label": "Intimidation Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "CHA-based skill."
+        },
+        {
+          "id": "intimidationTotal",
+          "label": "Intimidation",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["charismaMod", "proficiencyBonus", "intimidationProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "investigationProf",
+          "label": "Investigation Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "INT-based skill."
+        },
+        {
+          "id": "investigationTotal",
+          "label": "Investigation",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["intelligenceMod", "proficiencyBonus", "investigationProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "medicineProf",
+          "label": "Medicine Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "WIS-based skill."
+        },
+        {
+          "id": "medicineTotal",
+          "label": "Medicine",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["wisdomMod", "proficiencyBonus", "medicineProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "natureProf",
+          "label": "Nature Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "INT-based skill."
+        },
+        {
+          "id": "natureTotal",
+          "label": "Nature",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["intelligenceMod", "proficiencyBonus", "natureProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "perceptionProf",
+          "label": "Perception Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "WIS-based skill."
+        },
+        {
+          "id": "perceptionTotal",
+          "label": "Perception",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["wisdomMod", "proficiencyBonus", "perceptionProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "performanceProf",
+          "label": "Performance Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "CHA-based skill."
+        },
+        {
+          "id": "performanceTotal",
+          "label": "Performance",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["charismaMod", "proficiencyBonus", "performanceProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "persuasionProf",
+          "label": "Persuasion Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "CHA-based skill."
+        },
+        {
+          "id": "persuasionTotal",
+          "label": "Persuasion",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["charismaMod", "proficiencyBonus", "persuasionProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "religionProf",
+          "label": "Religion Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "INT-based skill."
+        },
+        {
+          "id": "religionTotal",
+          "label": "Religion",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["intelligenceMod", "proficiencyBonus", "religionProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "sleightOfHandProf",
+          "label": "Sleight of Hand Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "DEX-based skill."
+        },
+        {
+          "id": "sleightOfHandTotal",
+          "label": "Sleight of Hand",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["dexterityMod", "proficiencyBonus", "sleightOfHandProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "stealthProf",
+          "label": "Stealth Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "DEX-based skill."
+        },
+        {
+          "id": "stealthTotal",
+          "label": "Stealth",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["dexterityMod", "proficiencyBonus", "stealthProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "survivalProf",
+          "label": "Survival Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Skill Proficiencies",
+          "notes": "WIS-based skill."
+        },
+        {
+          "id": "survivalTotal",
+          "label": "Survival",
+          "type": "calculated",
+          "derivation": "calcSkillTotal",
+          "dependsOn": ["wisdomMod", "proficiencyBonus", "survivalProf"],
+          "group": "Skill Totals"
+        },
+        {
+          "id": "strengthSaveProf",
+          "label": "Strength Save Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Saving Throw Proficiencies",
+          "notes": "Granted by class (Barbarian, Fighter). PHB 2024."
+        },
+        {
+          "id": "strengthSaveTotal",
+          "label": "Strength Save",
+          "type": "calculated",
+          "derivation": "calcSavingThrow",
+          "dependsOn": ["strengthMod", "proficiencyBonus", "strengthSaveProf"],
+          "group": "Saving Throw Totals"
+        },
+        {
+          "id": "dexteritySaveProf",
+          "label": "Dexterity Save Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Saving Throw Proficiencies"
+        },
+        {
+          "id": "dexteritySaveTotal",
+          "label": "Dexterity Save",
+          "type": "calculated",
+          "derivation": "calcSavingThrow",
+          "dependsOn": ["dexterityMod", "proficiencyBonus", "dexteritySaveProf"],
+          "group": "Saving Throw Totals"
+        },
+        {
+          "id": "constitutionSaveProf",
+          "label": "Constitution Save Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Saving Throw Proficiencies"
+        },
+        {
+          "id": "constitutionSaveTotal",
+          "label": "Constitution Save",
+          "type": "calculated",
+          "derivation": "calcSavingThrow",
+          "dependsOn": ["constitutionMod", "proficiencyBonus", "constitutionSaveProf"],
+          "group": "Saving Throw Totals"
+        },
+        {
+          "id": "intelligenceSaveProf",
+          "label": "Intelligence Save Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Saving Throw Proficiencies"
+        },
+        {
+          "id": "intelligenceSaveTotal",
+          "label": "Intelligence Save",
+          "type": "calculated",
+          "derivation": "calcSavingThrow",
+          "dependsOn": ["intelligenceMod", "proficiencyBonus", "intelligenceSaveProf"],
+          "group": "Saving Throw Totals"
+        },
+        {
+          "id": "wisdomSaveProf",
+          "label": "Wisdom Save Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Saving Throw Proficiencies"
+        },
+        {
+          "id": "wisdomSaveTotal",
+          "label": "Wisdom Save",
+          "type": "calculated",
+          "derivation": "calcSavingThrow",
+          "dependsOn": ["wisdomMod", "proficiencyBonus", "wisdomSaveProf"],
+          "group": "Saving Throw Totals"
+        },
+        {
+          "id": "charismaSaveProf",
+          "label": "Charisma Save Proficiency",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Saving Throw Proficiencies"
+        },
+        {
+          "id": "charismaSaveTotal",
+          "label": "Charisma Save",
+          "type": "calculated",
+          "derivation": "calcSavingThrow",
+          "dependsOn": ["charismaMod", "proficiencyBonus", "charismaSaveProf"],
+          "group": "Saving Throw Totals"
+        }
+      ]
+    },
+
+    {
+      "stepId": "combat",
+      "label": "Combat",
+      "description": "Record your combat statistics. Armor Class, Speed, and Hit Points define your survivability in battle.",
+      "fields": [
+        {
+          "id": "armorClass",
+          "label": "Armor Class",
+          "type": "text",
+          "placeholder": "10",
+          "notes": "Base AC = 10 + DEX mod (unarmored). Armor changes the base; some class features (Barbarian Unarmored Defense, Monk Unarmored Defense) use different formulas."
+        },
+        {
+          "id": "initiative",
+          "label": "Initiative",
+          "type": "calculated",
+          "derivation": "calcInitiative",
+          "dependsOn": ["dexterityMod"],
+          "notes": "Initiative = DEX modifier by default. PHB 2024 p.22. The Alert feat adds +5."
+        },
+        {
+          "id": "speed",
+          "label": "Speed",
+          "type": "text",
+          "placeholder": "30",
+          "notes": "Walking speed in feet. Most species have 30 ft. Dwarves have 25 ft. Racial or class features may alter this."
+        },
+        {
+          "id": "maxHitPoints",
+          "label": "Maximum Hit Points",
+          "type": "calculated",
+          "derivation": "calcMaxHitPoints",
+          "dependsOn": ["hitDie", "constitutionMod", "characterLevel"],
+          "notes": "Level 1: hit die max + CON mod. Each subsequent level: hit die average (rounded up) + CON mod. PHB 2024 p.15."
+        },
+        {
+          "id": "hitDice",
+          "label": "Hit Dice",
+          "type": "text",
+          "placeholder": "1d8",
+          "notes": "Total hit dice pool, e.g. '5d10' for a level 5 Fighter. Matches character level × hit die type."
+        },
+        {
+          "id": "deathSaveSuccess1",
+          "label": "Death Save Success 1",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Death Saves"
+        },
+        {
+          "id": "deathSaveSuccess2",
+          "label": "Death Save Success 2",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Death Saves"
+        },
+        {
+          "id": "deathSaveSuccess3",
+          "label": "Death Save Success 3",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Death Saves",
+          "notes": "Three successes stabilize the character."
+        },
+        {
+          "id": "deathSaveFailure1",
+          "label": "Death Save Failure 1",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Death Saves"
+        },
+        {
+          "id": "deathSaveFailure2",
+          "label": "Death Save Failure 2",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Death Saves"
+        },
+        {
+          "id": "deathSaveFailure3",
+          "label": "Death Save Failure 3",
+          "type": "checkbox",
+          "defaultValue": false,
+          "group": "Death Saves",
+          "notes": "Three failures result in death. PHB 2024 p.23."
+        }
+      ]
+    },
+
+    {
+      "stepId": "equipment",
+      "label": "Equipment",
+      "description": "Record your starting equipment granted by your class and background, plus any additional gear purchased with starting gold.",
+      "fields": [
+        {
+          "id": "gold",
+          "label": "Gold Pieces (GP)",
+          "type": "text",
+          "placeholder": "0",
+          "group": "Currency"
+        },
+        {
+          "id": "copper",
+          "label": "Copper Pieces (CP)",
+          "type": "text",
+          "placeholder": "0",
+          "group": "Currency"
+        },
+        {
+          "id": "silver",
+          "label": "Silver Pieces (SP)",
+          "type": "text",
+          "placeholder": "0",
+          "group": "Currency"
+        },
+        {
+          "id": "electrum",
+          "label": "Electrum Pieces (EP)",
+          "type": "text",
+          "placeholder": "0",
+          "group": "Currency",
+          "notes": "Electrum is worth 5 SP. Rarely used in most campaigns."
+        },
+        {
+          "id": "platinum",
+          "label": "Platinum Pieces (PP)",
+          "type": "text",
+          "placeholder": "0",
+          "group": "Currency"
+        },
+        {
+          "id": "armorName",
+          "label": "Armor Name",
+          "type": "text",
+          "placeholder": "Leather Armor",
+          "group": "Armor"
+        },
+        {
+          "id": "armorType",
+          "label": "Armor Type",
+          "type": "dropdown",
+          "defaultValue": "none",
+          "group": "Armor",
+          "options": [
+            { "value": "none",   "label": "None",   "description": "No armor worn. AC = 10 + DEX modifier (or class Unarmored Defense)." },
+            { "value": "light",  "label": "Light",  "description": "Light Armor: AC = armor base + DEX modifier. Includes Padded (11), Leather (11), Studded Leather (12)." },
+            { "value": "medium", "label": "Medium", "description": "Medium Armor: AC = armor base + DEX modifier (max +2). Includes Hide (12), Chain Shirt (13), Scale Mail (14), Breastplate (14), Half Plate (15)." },
+            { "value": "heavy",  "label": "Heavy",  "description": "Heavy Armor: AC = armor base, no DEX modifier. Includes Ring Mail (14), Chain Mail (16), Splint (17), Plate (18). Requires STR 13–15 depending on type." },
+            { "value": "shield", "label": "Shield", "description": "Shield adds +2 to AC. Can be combined with any armor type. Requires one hand." }
+          ]
+        },
+        {
+          "id": "weapon1Name",
+          "label": "Weapon 1 Name",
+          "type": "text",
+          "placeholder": "Longsword",
+          "group": "Weapon Slot 1"
+        },
+        {
+          "id": "weapon1DamageType",
+          "label": "Weapon 1 Damage Type",
+          "type": "text",
+          "placeholder": "Slashing",
+          "group": "Weapon Slot 1"
+        },
+        {
+          "id": "weapon1Damage",
+          "label": "Weapon 1 Damage",
+          "type": "text",
+          "placeholder": "1d8+3",
+          "group": "Weapon Slot 1"
+        },
+        {
+          "id": "weapon2Name",
+          "label": "Weapon 2 Name",
+          "type": "text",
+          "placeholder": "Shortbow",
+          "group": "Weapon Slot 2"
+        },
+        {
+          "id": "weapon2DamageType",
+          "label": "Weapon 2 Damage Type",
+          "type": "text",
+          "placeholder": "Piercing",
+          "group": "Weapon Slot 2"
+        },
+        {
+          "id": "weapon2Damage",
+          "label": "Weapon 2 Damage",
+          "type": "text",
+          "placeholder": "1d6+2",
+          "group": "Weapon Slot 2"
+        },
+        {
+          "id": "weapon3Name",
+          "label": "Weapon 3 Name",
+          "type": "text",
+          "group": "Weapon Slot 3"
+        },
+        {
+          "id": "weapon3DamageType",
+          "label": "Weapon 3 Damage Type",
+          "type": "text",
+          "group": "Weapon Slot 3"
+        },
+        {
+          "id": "weapon3Damage",
+          "label": "Weapon 3 Damage",
+          "type": "text",
+          "group": "Weapon Slot 3"
+        },
+        {
+          "id": "equipment",
+          "label": "Equipment & Gear",
+          "type": "textarea",
+          "placeholder": "List all equipment, tools, and adventuring gear...",
+          "notes": "Free-text equipment list. Starting equipment is granted by class and background per PHB 2024."
+        }
+      ]
+    },
+
+    {
+      "stepId": "spellcasting",
+      "label": "Spellcasting",
+      "description": "Record your spellcasting information if your class grants spells. Non-spellcasting classes may leave this section blank.",
+      "fields": [
+        {
+          "id": "spellcastingClass",
+          "label": "Spellcasting Class",
+          "type": "text",
+          "placeholder": "e.g. Wizard",
+          "notes": "The class that grants your spellcasting. Multi-classed characters may have multiple; record primary here."
+        },
+        {
+          "id": "spellcastingAbility",
+          "label": "Spellcasting Ability",
+          "type": "dropdown",
+          "options": [
+            { "value": "intelligence", "label": "Intelligence", "description": "Used by Artificer, Wizard, Eldritch Knight, Arcane Trickster." },
+            { "value": "wisdom",       "label": "Wisdom",       "description": "Used by Cleric, Druid, Ranger." },
+            { "value": "charisma",     "label": "Charisma",     "description": "Used by Bard, Paladin, Sorcerer, Warlock." }
+          ],
+          "notes": "Determines which ability modifier is added to Spell Save DC and Spell Attack Bonus."
+        },
+        {
+          "id": "spellSaveDC",
+          "label": "Spell Save DC",
+          "type": "calculated",
+          "derivation": "calcSpellSaveDC",
+          "dependsOn": ["proficiencyBonus", "spellcastingAbility"],
+          "notes": "8 + proficiency bonus + spellcasting ability modifier. PHB 2024 p.232."
+        },
+        {
+          "id": "spellAttackBonus",
+          "label": "Spell Attack Bonus",
+          "type": "calculated",
+          "derivation": "calcSpellAttackBonus",
+          "dependsOn": ["proficiencyBonus", "spellcastingAbility"],
+          "notes": "Proficiency bonus + spellcasting ability modifier. PHB 2024 p.232."
+        },
+        {
+          "id": "spellSlots1",
+          "label": "1st-Level Spell Slots",
+          "type": "text",
+          "placeholder": "4",
+          "group": "Spell Slots",
+          "notes": "Number of 1st-level spell slots available. Varies by class and level."
+        },
+        {
+          "id": "spellSlots2",
+          "label": "2nd-Level Spell Slots",
+          "type": "text",
+          "placeholder": "3",
+          "group": "Spell Slots"
+        },
+        {
+          "id": "spellSlots3",
+          "label": "3rd-Level Spell Slots",
+          "type": "text",
+          "placeholder": "3",
+          "group": "Spell Slots"
+        },
+        {
+          "id": "spellSlots4",
+          "label": "4th-Level Spell Slots",
+          "type": "text",
+          "placeholder": "3",
+          "group": "Spell Slots"
+        },
+        {
+          "id": "spellSlots5",
+          "label": "5th-Level Spell Slots",
+          "type": "text",
+          "placeholder": "2",
+          "group": "Spell Slots"
+        },
+        {
+          "id": "spellSlots6",
+          "label": "6th-Level Spell Slots",
+          "type": "text",
+          "placeholder": "1",
+          "group": "Spell Slots"
+        },
+        {
+          "id": "spellSlots7",
+          "label": "7th-Level Spell Slots",
+          "type": "text",
+          "placeholder": "1",
+          "group": "Spell Slots"
+        },
+        {
+          "id": "spellSlots8",
+          "label": "8th-Level Spell Slots",
+          "type": "text",
+          "placeholder": "1",
+          "group": "Spell Slots"
+        },
+        {
+          "id": "spellSlots9",
+          "label": "9th-Level Spell Slots",
+          "type": "text",
+          "placeholder": "1",
+          "group": "Spell Slots"
+        },
+        {
+          "id": "cantrips",
+          "label": "Cantrips Known",
+          "type": "textarea",
+          "placeholder": "Fire Bolt, Mage Hand, Prestidigitation...",
+          "notes": "Cantrips do not consume spell slots."
+        },
+        {
+          "id": "spells1",
+          "label": "1st-Level Spells",
+          "type": "textarea",
+          "placeholder": "Magic Missile, Shield, Sleep...",
+          "group": "Spells Known/Prepared"
+        },
+        {
+          "id": "spells2",
+          "label": "2nd-Level Spells",
+          "type": "textarea",
+          "placeholder": "Misty Step, Hold Person...",
+          "group": "Spells Known/Prepared"
+        },
+        {
+          "id": "spells3",
+          "label": "3rd-Level Spells",
+          "type": "textarea",
+          "placeholder": "Fireball, Counterspell...",
+          "group": "Spells Known/Prepared"
+        },
+        {
+          "id": "spells4",
+          "label": "4th-Level Spells",
+          "type": "textarea",
+          "placeholder": "Banishment, Polymorph...",
+          "group": "Spells Known/Prepared"
+        },
+        {
+          "id": "spells5",
+          "label": "5th-Level Spells",
+          "type": "textarea",
+          "placeholder": "Cone of Cold, Wall of Force...",
+          "group": "Spells Known/Prepared"
+        }
+      ]
+    },
+
+    {
+      "stepId": "background-features",
+      "label": "Background & Features",
+      "description": "Record your background feature, personality traits, ideals, bonds, and flaws. The 2024 PHB grants one background feat and language proficiencies.",
+      "fields": [
+        {
+          "id": "backgroundFeature",
+          "label": "Background Feature",
+          "type": "textarea",
+          "placeholder": "Describe your background's special feature...",
+          "notes": "Each 2024 PHB background grants a feature (e.g., Acolyte grants Shelter of the Faithful)."
+        },
+        {
+          "id": "personalityTraits",
+          "label": "Personality Traits",
+          "type": "textarea",
+          "placeholder": "I idolize a particular hero of my faith and constantly refer to that person's deeds and example..."
+        },
+        {
+          "id": "ideals",
+          "label": "Ideals",
+          "type": "textarea",
+          "placeholder": "Tradition. The ancient traditions of worship and sacrifice must be preserved and upheld..."
+        },
+        {
+          "id": "bonds",
+          "label": "Bonds",
+          "type": "textarea",
+          "placeholder": "I would die to recover an ancient relic of my faith that was lost long ago..."
+        },
+        {
+          "id": "flaws",
+          "label": "Flaws",
+          "type": "textarea",
+          "placeholder": "I judge others harshly, and myself even more severely..."
+        },
+        {
+          "id": "featName",
+          "label": "Background Feat",
+          "type": "text",
+          "placeholder": "e.g. Magic Initiate (Cleric)",
+          "notes": "In the 2024 PHB, each background grants one specific Origin feat. Record it here."
+        },
+        {
+          "id": "featDescription",
+          "label": "Feat Description",
+          "type": "textarea",
+          "placeholder": "Describe the feat's mechanical benefits..."
+        },
+        {
+          "id": "languagesKnown",
+          "label": "Languages Known",
+          "type": "textarea",
+          "placeholder": "Common, Elvish...",
+          "notes": "All characters know Common plus additional languages from species and background."
+        },
+        {
+          "id": "toolProficiencies",
+          "label": "Tool Proficiencies",
+          "type": "textarea",
+          "placeholder": "Thieves' Tools, Herbalism Kit...",
+          "notes": "Tool proficiencies from class, background, and species."
+        },
+        {
+          "id": "otherProficiencies",
+          "label": "Other Proficiencies",
+          "type": "textarea",
+          "placeholder": "Gaming Sets, Musical Instruments...",
+          "notes": "Any remaining proficiencies not captured elsewhere (gaming sets, vehicles, etc.)."
+        }
+      ]
+    },
+
+    {
+      "stepId": "notes",
+      "label": "Notes",
+      "description": "Record additional information about your character's history, allies, and treasures.",
+      "fields": [
+        {
+          "id": "backstory",
+          "label": "Character Backstory",
+          "type": "textarea",
+          "placeholder": "Describe your character's history and origins..."
+        },
+        {
+          "id": "alliesOrganizations",
+          "label": "Allies & Organizations",
+          "type": "textarea",
+          "placeholder": "The Harpers, The Zhentarim, your adventuring party..."
+        },
+        {
+          "id": "additionalFeatures",
+          "label": "Additional Features & Traits",
+          "type": "textarea",
+          "placeholder": "Class features, species traits, racial abilities not captured elsewhere..."
+        },
+        {
+          "id": "treasure",
+          "label": "Treasure",
+          "type": "textarea",
+          "placeholder": "Magic items, art objects, gems, quest items..."
+        },
+        {
+          "id": "notes",
+          "label": "Miscellaneous Notes",
+          "type": "textarea",
+          "placeholder": "Session notes, reminders, NPC names, quest hooks..."
+        }
+      ]
+    }
+
+  ],
+
+  "sheetSections": [
+    {
+      "sectionId": "core-identity",
+      "label": "Identity",
+      "fieldIds": [
+        "characterName",
+        "playerName",
+        "characterClass",
+        "subclass",
+        "species",
+        "background",
+        "characterLevel",
+        "experiencePoints",
+        "proficiencyBonus"
+      ]
+    },
+    {
+      "sectionId": "ability-scores",
+      "label": "Ability Scores",
+      "fieldIds": [
+        "strength",      "strengthMod",      "strengthSaveProf",      "strengthSaveTotal",
+        "dexterity",     "dexterityMod",     "dexteritySaveProf",     "dexteritySaveTotal",
+        "constitution",  "constitutionMod",  "constitutionSaveProf",  "constitutionSaveTotal",
+        "intelligence",  "intelligenceMod",  "intelligenceSaveProf",  "intelligenceSaveTotal",
+        "wisdom",        "wisdomMod",        "wisdomSaveProf",        "wisdomSaveTotal",
+        "charisma",      "charismaMod",      "charismaSaveProf",      "charismaSaveTotal",
+        "abilityScoreMethod"
+      ]
+    },
+    {
+      "sectionId": "combat",
+      "label": "Combat",
+      "fieldIds": [
+        "armorClass",
+        "initiative",
+        "speed",
+        "maxHitPoints",
+        "hitDie",
+        "hitDice",
+        "deathSaveSuccess1",
+        "deathSaveSuccess2",
+        "deathSaveSuccess3",
+        "deathSaveFailure1",
+        "deathSaveFailure2",
+        "deathSaveFailure3"
+      ]
+    },
+    {
+      "sectionId": "skills",
+      "label": "Skills",
+      "fieldIds": [
+        "acrobaticsProf",      "acrobaticsTotal",
+        "animalHandlingProf",  "animalHandlingTotal",
+        "arcanaProf",          "arcanaTotal",
+        "athleticsProf",       "athleticsTotal",
+        "deceptionProf",       "deceptionTotal",
+        "historyProf",         "historyTotal",
+        "insightProf",         "insightTotal",
+        "intimidationProf",    "intimidationTotal",
+        "investigationProf",   "investigationTotal",
+        "medicineProf",        "medicineTotal",
+        "natureProf",          "natureTotal",
+        "perceptionProf",      "perceptionTotal",
+        "performanceProf",     "performanceTotal",
+        "persuasionProf",      "persuasionTotal",
+        "religionProf",        "religionTotal",
+        "sleightOfHandProf",   "sleightOfHandTotal",
+        "stealthProf",         "stealthTotal",
+        "survivalProf",        "survivalTotal"
+      ]
+    },
+    {
+      "sectionId": "spellcasting",
+      "label": "Spellcasting",
+      "fieldIds": [
+        "spellcastingClass",
+        "spellcastingAbility",
+        "spellSaveDC",
+        "spellAttackBonus",
+        "spellSlots1",
+        "spellSlots2",
+        "spellSlots3",
+        "spellSlots4",
+        "spellSlots5",
+        "spellSlots6",
+        "spellSlots7",
+        "spellSlots8",
+        "spellSlots9",
+        "cantrips",
+        "spells1",
+        "spells2",
+        "spells3",
+        "spells4",
+        "spells5"
+      ]
+    },
+    {
+      "sectionId": "equipment",
+      "label": "Equipment",
+      "fieldIds": [
+        "gold",
+        "copper",
+        "silver",
+        "electrum",
+        "platinum",
+        "armorName",
+        "armorType",
+        "weapon1Name",
+        "weapon1DamageType",
+        "weapon1Damage",
+        "weapon2Name",
+        "weapon2DamageType",
+        "weapon2Damage",
+        "weapon3Name",
+        "weapon3DamageType",
+        "weapon3Damage",
+        "equipment"
+      ]
+    },
+    {
+      "sectionId": "background-features",
+      "label": "Background & Features",
+      "fieldIds": [
+        "backgroundFeature",
+        "personalityTraits",
+        "ideals",
+        "bonds",
+        "flaws",
+        "featName",
+        "featDescription",
+        "languagesKnown",
+        "toolProficiencies",
+        "otherProficiencies"
+      ]
+    },
+    {
+      "sectionId": "notes",
+      "label": "Notes",
+      "fieldIds": [
+        "backstory",
+        "alliesOrganizations",
+        "additionalFeatures",
+        "treasure",
+        "notes"
+      ]
+    }
+  ],
+
+  "specialRules": [
+    "dnd-point-buy",
+    "dnd-standard-array",
+    "dnd-multiclass"
+  ],
+
+  "theme": {
+    "accentColor": "#c9a84c",
+    "accentColorMuted": "#8b6914",
+    "flavorClass": "theme-dnd5e",
+    "dieType": "d20"
+  }
+}

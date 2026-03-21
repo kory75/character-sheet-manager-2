@@ -25,6 +25,18 @@ export const routes: Routes = [
           import('./pages/paranoia-sheet/paranoia-sheet.component')
             .then(m => m.ParanoiaSheetComponent),
       },
+      {
+        path: 'dnd',
+        loadComponent: () =>
+          import('./pages/dnd-creation/dnd-creation.component')
+            .then(m => m.DndCreationComponent),
+      },
+      {
+        path: 'dnd-sheet',
+        loadComponent: () =>
+          import('./pages/dnd-sheet/dnd-sheet.component')
+            .then(m => m.DndSheetComponent),
+      },
     ],
   },
 ];

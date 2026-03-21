@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Creation Wizard - Ability Scores</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&amp;family=Inter:wght@300;400;600;700&amp;family=Newsreader:opsz,wght@6..72,400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#d1c5b2",
+                        "on-secondary-fixed-variant": "#3d4665",
+                        "surface-dim": "#0d131e",
+                        "on-surface-variant": "#d0c5b2",
+                        "surface-variant": "#2f3541",
+                        "on-primary-fixed-variant": "#584400",
+                        "tertiary-fixed": "#ede1cd",
+                        "primary-fixed": "#ffe08f",
+                        "surface-tint": "#e6c364",
+                        "tertiary-container": "#b5aa98",
+                        "on-secondary-container": "#abb4d8",
+                        "on-tertiary": "#363022",
+                        "on-primary-fixed": "#241a00",
+                        "surface": "#0d131e",
+                        "on-error": "#690005",
+                        "surface-bright": "#333946",
+                        "primary-container": "#c9a84c",
+                        "surface-container-low": "#161c27",
+                        "tertiary-fixed-dim": "#d1c5b2",
+                        "on-tertiary-fixed": "#201b0f",
+                        "inverse-on-surface": "#2b303c",
+                        "on-primary": "#3d2e00",
+                        "secondary-fixed-dim": "#bdc5ea",
+                        "on-surface": "#dde2f2",
+                        "on-tertiary-fixed-variant": "#4d4637",
+                        "inverse-primary": "#755b00",
+                        "secondary": "#bdc5ea",
+                        "on-secondary": "#262f4d",
+                        "surface-container-lowest": "#080e19",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#e6c364",
+                        "on-tertiary-container": "#463f30",
+                        "on-primary-container": "#503d00",
+                        "secondary-fixed": "#dbe1ff",
+                        "outline": "#99907e",
+                        "primary": "#e6c364",
+                        "secondary-container": "#3d4665",
+                        "on-background": "#dde2f2",
+                        "background": "#0d131e",
+                        "outline-variant": "#4d4637",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#2f3541",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#dde2f2",
+                        "surface-container": "#1a202b",
+                        "surface-container-high": "#242a36",
+                        "on-secondary-fixed": "#111a37"
+                    },
+                    fontFamily: {
+                        "headline": ["Cinzel", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "cinzel": ["Cinzel", "serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .diamond-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #c9a84c 50%, transparent 100%);
+            position: relative;
+            width: 100%;
+        }
+        .diamond-divider::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: 8px;
+            height: 8px;
+            background-color: #c9a84c;
+            border: 1px solid #1a202b;
+        }
+        .stat-glow {
+            box-shadow: 0 0 20px rgba(230, 195, 100, 0.15);
+        }
+        .pulsing-ring {
+            box-shadow: 0 0 0 2px #e6c364;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen">
+<!-- Focused Header (Simplified) -->
+<nav class="flex items-center justify-between px-8 py-4 bg-surface-container-lowest border-b border-outline-variant/30">
+<button class="flex items-center gap-2 text-tertiary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-label text-xs uppercase tracking-widest">Back to Origin</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 bg-primary/10 flex items-center justify-center">
+<svg class="text-primary h-5 w-5" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+</div>
+<h1 class="font-headline text-lg font-bold tracking-wider text-white">CHARACTER CREATOR</h1>
+</div>
+<div class="w-24"></div> <!-- Spacer -->
+</nav>
+<main class="max-w-5xl mx-auto px-6 py-12">
+<!-- Horizontal Stepper -->
+<div class="mb-12">
+<div class="flex items-center justify-between max-w-3xl mx-auto relative">
+<!-- Line background -->
+<div class="absolute h-[1px] bg-outline-variant/30 w-full top-1/2 -translate-y-1/2 z-0"></div>
+<!-- Node 1 (Done) -->
+<div class="z-10 h-3 w-3 bg-primary rotate-45 border border-surface shadow-[0_0_10px_rgba(230,195,100,0.5)]"></div>
+<!-- Node 2 (Done) -->
+<div class="z-10 h-3 w-3 bg-primary rotate-45 border border-surface shadow-[0_0_10px_rgba(230,195,100,0.5)]"></div>
+<!-- Node 3 (Done) -->
+<div class="z-10 h-3 w-3 bg-primary rotate-45 border border-surface shadow-[0_0_10px_rgba(230,195,100,0.5)]"></div>
+<!-- Node 4 (Current) -->
+<div class="z-10 h-4 w-4 bg-primary rotate-45 border-2 border-surface pulsing-ring"></div>
+<!-- Node 5 -->
+<div class="z-10 h-2 w-2 bg-outline-variant rotate-45"></div>
+<!-- Node 6 -->
+<div class="z-10 h-2 w-2 bg-outline-variant rotate-45"></div>
+<!-- Node 7 -->
+<div class="z-10 h-2 w-2 bg-outline-variant rotate-45"></div>
+<!-- Node 8 -->
+<div class="z-10 h-2 w-2 bg-outline-variant rotate-45"></div>
+<!-- Node 9 -->
+<div class="z-10 h-2 w-2 bg-outline-variant rotate-45"></div>
+<!-- Node 10 -->
+<div class="z-10 h-2 w-2 bg-outline-variant rotate-45"></div>
+</div>
+<p class="text-center font-label text-[10px] uppercase tracking-[0.3em] mt-6 text-tertiary">Step IV: Establishing the Essence</p>
+</div>
+<!-- Auto-Roll CTA -->
+<div class="mb-12">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container h-16 flex items-center justify-center gap-3 group relative overflow-hidden transition-all hover:brightness-110">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDskFpZY4vj2gZKhWgz36FqrkbUKuT21lk3W06Kw9CIDYO6gFfdCV5NSyBqNu3z_sQ9mSYe1obK9yEQ0IHLiTy3N9p8mChYmXno0fT1l55tKJxjVxBnsZy2QLq7uSZy6EHrKYq2-AIPPwLXzkY8cMl602hTXuElK__am2Rt42-6OdfXc81Bx_FwzCObzZsrXTjkwAt1-JDbzUXhVFAASJkfqVbCmZPzSAIf16rP438MbsUYvPCwgfR5CZyos53uF9G0cZ-WbmJ2yo4e');"></div>
+<span class="material-symbols-outlined text-on-primary text-2xl" data-icon="casino">casino</span>
+<span class="font-headline font-bold text-on-primary text-xl tracking-[0.1em]">AUTO-ROLL CHARACTER</span>
+</button>
+</div>
+<!-- Main Content Card -->
+<div class="bg-surface-container-low border-l-2 border-primary relative">
+<!-- Decorative Dragon Watermark -->
+<div class="absolute right-10 bottom-10 opacity-[0.03] pointer-events-none">
+<svg fill="currentColor" height="300" viewbox="0 0 24 24" width="300"><path d="M12,2C10,2 8,3 6,5C4,7 3,9 3,11C3,13 4,15 6,17C8,19 10,20 12,20C14,20 16,19 18,17C20,15 21,13 21,11C21,9 20,7 18,5C16,3 14,2 12,2M12,4C13.5,4 15,4.7 16.5,6C18,7.3 19,8.7 19,10C19,11.3 18.3,12.7 17,14C15.7,15.3 14.3,16 13,16C11.7,16 10.3,15.3 9,14C7.7,12.7 7,11.3 7,10C7,8.7 8,7.3 9.5,6C11,4.7 12.5,4 12,4Z"></path></svg>
+</div>
+<div class="p-10">
+<div class="mb-10 text-center">
+<h2 class="font-headline text-5xl font-black tracking-tight text-white mb-2">ABILITY SCORES</h2>
+<p class="font-body italic text-tertiary text-lg">"The gods have allotted you your gifts."</p>
+<div class="mt-8 flex justify-center">
+<div class="flex bg-surface-container-highest p-1 border border-outline-variant/30">
+<button class="px-6 py-2 font-label text-xs uppercase tracking-widest text-tertiary hover:text-white transition-colors">Standard Array</button>
+<button class="px-6 py-2 font-label text-xs uppercase tracking-widest text-tertiary hover:text-white transition-colors border-x border-outline-variant/20">Point Buy</button>
+<button class="px-8 py-2 font-label text-xs uppercase tracking-widest bg-primary text-on-primary font-bold shadow-[0_0_15px_rgba(230,195,100,0.3)]">Roll</button>
+</div>
+</div>
+</div>
+<div class="diamond-divider mb-12"></div>
+<!-- 2x3 Grid of Stat Blocks -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- STR Block (Glow) -->
+<div class="bg-surface-container-highest border-l-2 border-primary p-6 stat-glow relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-tertiary">Strength</span>
+<span class="material-symbols-outlined text-primary text-lg cursor-pointer hover:rotate-180 transition-transform duration-500" data-icon="casino">casino</span>
+</div>
+<div class="flex items-baseline gap-3">
+<h3 class="font-headline text-5xl font-bold text-white">16</h3>
+<span class="font-cinzel text-xl text-primary font-bold">(+3)</span>
+</div>
+</div>
+<!-- DEX Block -->
+<div class="bg-surface-container-highest border-l-2 border-primary/40 p-6 relative group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-tertiary">Dexterity</span>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary text-lg cursor-pointer" data-icon="casino">casino</span>
+</div>
+<div class="flex items-baseline gap-3">
+<h3 class="font-headline text-5xl font-bold text-white">12</h3>
+<span class="font-cinzel text-xl text-tertiary font-bold">(+1)</span>
+</div>
+</div>
+<!-- CON Block -->
+<div class="bg-surface-container-highest border-l-2 border-primary/40 p-6 relative group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-tertiary">Constitution</span>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary text-lg cursor-pointer" data-icon="casino">casino</span>
+</div>
+<div class="flex items-baseline gap-3">
+<h3 class="font-headline text-5xl font-bold text-white">15</h3>
+<span class="font-cinzel text-xl text-tertiary font-bold">(+2)</span>
+</div>
+</div>
+<!-- INT Block -->
+<div class="bg-surface-container-highest border-l-2 border-primary/40 p-6 relative group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-tertiary">Intelligence</span>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary text-lg cursor-pointer" data-icon="casino">casino</span>
+</div>
+<div class="flex items-baseline gap-3">
+<h3 class="font-headline text-5xl font-bold text-white">8</h3>
+<span class="font-cinzel text-xl text-error font-bold">(−1)</span>
+</div>
+</div>
+<!-- WIS Block -->
+<div class="bg-surface-container-highest border-l-2 border-primary/40 p-6 relative group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-tertiary">Wisdom</span>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary text-lg cursor-pointer" data-icon="casino">casino</span>
+</div>
+<div class="flex items-baseline gap-3">
+<h3 class="font-headline text-5xl font-bold text-white">13</h3>
+<span class="font-cinzel text-xl text-tertiary font-bold">(+1)</span>
+</div>
+</div>
+<!-- CHA Block -->
+<div class="bg-surface-container-highest border-l-2 border-primary/40 p-6 relative group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-tertiary">Charisma</span>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary text-lg cursor-pointer" data-icon="casino">casino</span>
+</div>
+<div class="flex items-baseline gap-3">
+<h3 class="font-headline text-5xl font-bold text-white">10</h3>
+<span class="font-cinzel text-xl text-tertiary font-bold">(+0)</span>
+</div>
+</div>
+</div>
+<!-- Footer Stats -->
+<div class="mt-12 flex justify-end">
+<div class="bg-surface-container-high border border-outline-variant/30 px-6 py-4 flex items-center gap-4">
+<span class="font-label text-xs uppercase tracking-widest text-tertiary">Proficiency Bonus</span>
+<div class="h-10 w-px bg-outline-variant/30"></div>
+<span class="font-headline text-2xl font-bold text-primary">+3</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Buttons -->
+<div class="mt-12 flex justify-between items-center">
+<button class="px-8 py-3 font-headline border border-outline-variant text-tertiary hover:bg-surface-container-low transition-colors uppercase tracking-widest text-sm">
+                Previous Step
+            </button>
+<button class="px-10 py-4 font-headline bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold shadow-lg uppercase tracking-widest text-sm hover:brightness-110">
+                Continue Creation
+            </button>
+</div>
+</main>
+<footer class="mt-20 py-10 border-t border-outline-variant/20 bg-surface-container-lowest text-center">
+<p class="font-label text-[10px] uppercase tracking-[0.4em] text-tertiary/40">The Chronicler's Tool © MMXIV - Artifact of Record</p>
+</footer>
+</body></html>

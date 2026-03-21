@@ -1,8 +1,11 @@
 # Auto-Roll Character — Sequence Design
 
-**Version:** 1.0
-**Date:** 2026-03-20
-**Status:** Approved — pending implementation
+**Version:** 1.1
+**Date:** 2026-03-21
+**Status:** Implemented for both Paranoia and D&D 5e
+
+> **Paranoia:** Full sequence built (attributes → service group → skills → weapons → mutation → society).
+> **D&D:** Sequence built (identity → species → class → ability scores animated → skills random pick → steps 5–9 flash navigation). Steps 5–9 do not fill real data yet — pending auto-roll content for combat, equipment, spells, background.
 
 ---
 

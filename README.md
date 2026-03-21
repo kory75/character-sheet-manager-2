@@ -7,12 +7,15 @@ A browser-based character sheet builder for tabletop RPGs. Build, store, and pri
 
 ---
 
-## What's working (v0.1)
+## What's working (v0.2)
 
 ### Home page (`/`)
-Neutral RPG-themed landing page with no system-specific branding. Shows a dossier carousel (placeholder characters) and a character synthesizer grid listing available game systems.
+Neutral landing page with a dossier carousel (placeholder characters) and a character synthesizer grid listing available game systems.
 
-### Paranoia 2nd Edition character creator (`/paranoia`)
+---
+
+### Paranoia 2nd Edition (`/paranoia`) ✅
+
 Full multi-step character creation wizard:
 - **Identity** — name, clearance level, service group, sector
 - **Attributes** — roll or manually assign the five core attributes (Agility, Chutzpah, Dexterity, Mechanical, Moxie)
@@ -23,14 +26,38 @@ Full multi-step character creation wizard:
 - **Equipment** — review standard-issue loadout
 - **Notes** — free-text field for additional details
 
-### Paranoia character sheet (`/sheet`)
-Print-ready character sheet generated from the wizard data:
+Character sheet (`/sheet`):
 - Identity header with dynamic clearance colour
 - Attribute bars and skill pip grids
-- Equipment list, mutation panel, and secret society panel (redacted in screen view, revealed on print)
-- One-click browser print to A4
+- Equipment list, mutation panel, and secret society panel (redacted on screen, revealed on print)
+- Print-ready A4 layout via browser print
 
-> **Note:** Character data is held in memory only. There is no save/load yet — refreshing the page clears the character. Print before you close the tab.
+Auto-roll sequence animates through all steps, filling each field in cascade.
+
+---
+
+### D&D 5th Edition 2024 (`/dnd`) 🚧 Experimental
+
+Full 10-step character creation wizard with "The Relic Ledger" fantasy theme (deep navy + gold, Cinzel serif):
+- **Identity** — character name, player name, level, background
+- **Species** — choose from all 2024 PHB species
+- **Class** — all 13 classes with subclass selection
+- **Ability Scores** — Standard Array, Point Buy, or Roll (4d6 drop lowest), with animated per-stat dice rolls
+- **Skills** — toggle proficiency or expertise (×2 proficiency bonus) per skill; saving throw proficiencies; Select All / Clear All shortcuts
+- **Combat** — AC, speed, hit points, hit dice, death saves
+- **Equipment** — currency, armour, weapons, gear
+- **Spellcasting** — spell slots, cantrips, spells by level
+- **Background** — personality traits, ideals, bonds, flaws, feat, languages, tool proficiencies
+- **Notes** — backstory, allies, additional features, treasure
+
+Character sheet (`/dnd-sheet`):
+- Two-column layout — sidebar (identity, ability scores) + main (combat, skills, spells, equipment, background)
+- All derived stats calculated live (modifiers, proficiency bonus, initiative, HP, spell save DC)
+- Print-ready: dark gold → dark ink, identity section horizontal, combat and saving throws side-by-side
+
+Auto-roll cascade animates through all 10 steps, rolling ability scores one-by-one.
+
+> **Experimental:** Skill and expertise slot limits are not yet enforced (pending rules research). Character data is in-memory only — refreshing the page clears the character.
 
 ---
 
@@ -41,6 +68,7 @@ Print-ready character sheet generated from the wizard data:
 | Framework | Angular 21 (standalone components, signals) |
 | Styling | Tailwind CSS v4 + custom design tokens |
 | Icons | Material Symbols |
+| Fonts | Cinzel (D&D), Inter (shared) |
 | Build | Angular CLI |
 
 ---
@@ -55,8 +83,13 @@ npx ng build        # production build → dist/
 
 ---
 
-## Planned systems
+## Roadmap
 
-- Dungeons & Dragons 5th Edition
-- Warhammer Fantasy Roleplay
-- and more
+| System | Status |
+|---|---|
+| Paranoia 2nd Edition | ✅ Complete |
+| D&D 5e 2024 | 🚧 Experimental — wizard and sheet built, rules enforcement incomplete |
+| Warhammer Fantasy Roleplay | ⏳ Planned |
+| Call of Cthulhu 7e | ⏳ Planned |
+
+> Character data is held in memory only across all systems. There is no save/load yet — refreshing the page clears the character. Print before you close the tab.

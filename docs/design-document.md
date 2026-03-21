@@ -1,8 +1,8 @@
 # RPG Character Sheet Generator — Design Document
 
-**Version:** 0.2 (Planning)
-**Date:** 2026-03-20
-**Status:** Draft
+**Version:** 0.3
+**Date:** 2026-03-21
+**Status:** In Progress
 
 ---
 
@@ -16,12 +16,12 @@ The design is **modern and clean first**, with thematic flavour applied as an ac
 
 ## 2. Supported Game Systems (Roadmap)
 
-| Priority | System | Edition | Notes |
-|---|---|---|---|
-| Phase 1 | **Paranoia** | 2nd Edition | Well-understood rules; good first system to validate architecture |
-| Phase 2 | **D&D** | 5e (2024 PHB) | Most popular system; broadens audience significantly |
-| Phase 3 | **Warhammer Fantasy** | WFRP 4e | Mechanically complex; good stress test for the platform |
-| Future | Call of Cthulhu | 7e | — |
+| Priority | System | Edition | Status | Notes |
+|---|---|---|---|---|
+| Phase 1 | **Paranoia** | 2nd Edition | ✅ Complete | Wizard + sheet + print working |
+| Phase 2 | **D&D** | 5e (2024 PHB) | 🚧 Experimental | Wizard + sheet built; rules enforcement incomplete — see section 9 |
+| Phase 3 | **Warhammer Fantasy** | WFRP 4e | ⏳ Not started | Mechanically complex; good stress test for the platform |
+| Future | Call of Cthulhu | 7e | ⏳ Not started | — |
 
 > **Note on legacy code:** Two previous implementations exist at `kory75/CharacterSheetGenerator` and `kory75/character-sheet-manager`. These are available for **rule logic reference only** — particularly the Paranoia 2nd Ed attribute list, skill system, service group mechanics, and the two-page secret-info UX pattern. Do not carry forward their visual design, code structure, or UX patterns wholesale. The new project is built from scratch.
 
@@ -191,6 +191,39 @@ The dice icon should be a clean SVG (not emoji). Per-system styling: Paranoia us
 | Deployment | Static — GitHub Pages / Firebase Hosting |
 
 All game rules are encoded as TypeScript + JSON. No runtime API calls for rules data.
+
+---
+
+## 9. D&D 5e 2024 — Current Status (as of 2026-03-21)
+
+### What is built
+
+| Area | Status | Notes |
+|---|---|---|
+| Schema (`docs/contracts/dnd-5e-2024.schema.json`) | ✅ Done | 133 fields, all 10 steps defined |
+| Creation rules (`src/app/games/dnd-5e-2024/creation-rules.ts`) | ✅ Done | Modifiers, proficiency, HP, spell DC, point buy, standard array |
+| Draft service (`DndDraftService`) | ✅ Done | ~40 signals, computed derived stats, `finalise()` snapshot |
+| All 10 wizard step components | ✅ Done | Identity, Species, Class, Ability Scores, Skills, Combat, Equipment, Spellcasting, Background, Notes |
+| Wizard orchestrator (`DndCreationComponent`) | ✅ Done | Diamond step indicator, auto-roll animation, skip button, bottom nav |
+| Auto-roll cascade | ✅ Done | Animated step-by-step: identity → species → class → ability scores (one-by-one) → skills (random pick) → steps 5–9 flash |
+| Full sheet view (`DndSheetComponent`) | ✅ Done | Two-column layout, all sections, derived stats |
+| Shell chrome (header + sidebar) | ✅ Done | Route-aware: D&D chrome shown for `/dnd*` routes |
+| Print stylesheet | ✅ Done | Dark colours → dark ink, identity horizontal, combat/saves side-by-side, 3-col abilities |
+| Skills step — expertise + bulk actions | ✅ Done | Three-state cycle (none/proficient/expert), Select All / Clear All |
+| Home page experimental badge | ✅ Done | D&D card shows EXPERIMENTAL label |
+
+### What is pending / incomplete
+
+| Area | Priority | Notes |
+|---|---|---|
+| Skill & save proficiency limits | 🔴 Needs research | Limits depend on class + background — need PHB lookup before enforcing |
+| Expertise slot limits | 🔴 Needs research | Class-dependent (Rogue, Bard, etc.) — do not guess |
+| Auto-roll: steps 5–9 content | 🟡 Medium | Currently just navigates through; no data is filled for combat, equipment, spells, background, notes |
+| Persistence (IndexedDB) | 🟡 Medium | Characters are lost on page refresh; `DndDraftService` is in-memory only |
+| Sheet → wizard round-trip | 🟡 Medium | Cannot load a saved character back into the wizard for editing |
+| PDF / print export button | 🟡 Medium | Print works via browser `Ctrl+P` but no in-app button |
+| Class feature enforcement | 🔴 Low now | Subclass options, hit die, spell access not filtered by class yet |
+| Step validation / required fields | 🟢 Low | CONTINUE button does not block on empty required fields |
 
 ---
 

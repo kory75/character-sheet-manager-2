@@ -1,1 +1,0 @@
-import{e as n,j as e}from"./chunk-FL7RO4TP.js";var r=class t{clearance=e("R");sectorCode=e("");firstName=e("");snapshot=e(null);static \u0275fac=function(i){return new(i||t)};static \u0275prov=n({token:t,factory:t.\u0275fac,providedIn:"root"})};export{r as a};

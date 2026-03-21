@@ -1,59 +1,58 @@
-# CharacterSheetManager2
+# Codex — Character Sheet Generator
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.3.
+A browser-based character sheet builder for tabletop RPGs. Build, store, and print character sheets across multiple game systems.
 
-## Development server
+**GitHub:** https://github.com/kory75/character-sheet-manager-2
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## What's working (v0.1)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Home page (`/`)
+Neutral RPG-themed landing page with no system-specific branding. Shows a dossier carousel (placeholder characters) and a character synthesizer grid listing available game systems.
 
-## Code scaffolding
+### Paranoia 2nd Edition character creator (`/paranoia`)
+Full multi-step character creation wizard:
+- **Identity** — name, clearance level, service group, sector
+- **Attributes** — roll or manually assign the five core attributes (Agility, Chutzpah, Dexterity, Mechanical, Moxie)
+- **Skills** — distribute points across skill groups derived from attributes
+- **Service group** — pick your department and starting gear package
+- **Mutations** — assign a secret mutant power
+- **Secret society** — choose allegiance and rank
+- **Equipment** — review standard-issue loadout
+- **Notes** — free-text field for additional details
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Paranoia character sheet (`/sheet`)
+Print-ready character sheet generated from the wizard data:
+- Identity header with dynamic clearance colour
+- Attribute bars and skill pip grids
+- Equipment list, mutation panel, and secret society panel (redacted in screen view, revealed on print)
+- One-click browser print to A4
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Tech stack
 
-```bash
-ng generate --help
-```
+| | |
+|---|---|
+| Framework | Angular 21 (standalone components, signals) |
+| Styling | Tailwind CSS v4 + custom design tokens |
+| Icons | Material Symbols |
+| Build | Angular CLI |
 
-## Building
+---
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+## Development
 
 ```bash
-ng e2e
+npm install
+npx ng serve        # dev server at http://localhost:4200
+npx ng build        # production build → dist/
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## Planned systems
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Dungeons & Dragons 5th Edition
+- Warhammer Fantasy Roleplay

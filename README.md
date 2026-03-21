@@ -2,6 +2,7 @@
 
 A browser-based character sheet builder for tabletop RPGs. Build, store, and print character sheets across multiple game systems.
 
+**Live site:** https://kory75.github.io/character-sheet-manager-2/
 **GitHub:** https://github.com/kory75/character-sheet-manager-2
 
 ---
@@ -28,6 +29,8 @@ Print-ready character sheet generated from the wizard data:
 - Attribute bars and skill pip grids
 - Equipment list, mutation panel, and secret society panel (redacted in screen view, revealed on print)
 - One-click browser print to A4
+
+> **Note:** Character data is held in memory only. There is no save/load yet — refreshing the page clears the character. Print before you close the tab.
 
 ---
 
@@ -56,3 +59,4 @@ npx ng build        # production build → dist/
 
 - Dungeons & Dragons 5th Edition
 - Warhammer Fantasy Roleplay
+- and more

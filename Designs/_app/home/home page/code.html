@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CODEX | Character Library</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Space+Grotesk:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed-dim": "#ecc246",
+                        "surface-bright": "#39393e",
+                        "on-primary": "#3d2e00",
+                        "inverse-on-surface": "#303035",
+                        "secondary-fixed": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#d1c5af",
+                        "on-secondary-container": "#ffb3aa",
+                        "outline": "#99907b",
+                        "background": "#131318",
+                        "primary-container": "#c9a227",
+                        "surface-container-highest": "#35343a",
+                        "surface-container": "#1f1f24",
+                        "surface": "#131318",
+                        "tertiary": "#ffb68e",
+                        "primary-fixed": "#ffe08e",
+                        "on-tertiary-container": "#662b00",
+                        "on-secondary": "#690005",
+                        "surface-variant": "#35343a",
+                        "tertiary-container": "#fa8840",
+                        "on-background": "#e4e1e8",
+                        "inverse-surface": "#e4e1e8",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#ecc246",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#a9000e",
+                        "on-secondary-fixed-variant": "#93000a",
+                        "surface-dim": "#131318",
+                        "tertiary-fixed-dim": "#ffb68e",
+                        "surface-container-lowest": "#0e0e13",
+                        "on-tertiary": "#532200",
+                        "on-primary-fixed-variant": "#584400",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "on-primary-fixed": "#241a00",
+                        "surface-container-low": "#1b1b20",
+                        "on-secondary-fixed": "#410002",
+                        "secondary": "#ffb4ab",
+                        "outline-variant": "#4d4635",
+                        "on-primary-container": "#4b3a00",
+                        "primary": "#ecc246",
+                        "on-surface": "#e4e1e8",
+                        "secondary-fixed-dim": "#ffb4ab",
+                        "inverse-primary": "#755b00",
+                        "tertiary-fixed": "#ffdbca",
+                        "on-tertiary-fixed": "#331200",
+                        "surface-container-high": "#2a292f"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .grid-bg {
+            background-size: 20px 20px;
+            background-image: linear-gradient(to right, rgba(153, 144, 123, 0.08) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(153, 144, 123, 0.08) 1px, transparent 1px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body grid-bg min-h-screen">
+<!-- SECTION 1: TOP APP BAR -->
+<header class="fixed top-0 left-0 w-full h-[52px] bg-surface-container-low z-50 flex justify-between items-center px-6 border-b border-primary-container/15">
+<div class="flex items-center gap-2">
+<span class="text-primary text-xs">◆</span>
+<span class="font-headline font-black text-xl tracking-tighter text-primary">CODEX</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-outline hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="person_outline">person_outline</span>
+</button>
+<button class="text-outline hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="pt-[52px]">
+<!-- SECTION 2: VAULT HERO -->
+<section class="py-24 px-6 relative max-w-7xl mx-auto">
+<!-- Corner Brackets -->
+<div class="absolute top-16 left-6 w-4 h-4 border-t-2 border-l-2 border-primary-container/60"></div>
+<div class="absolute top-16 right-6 w-4 h-4 border-t-2 border-r-2 border-primary-container/60"></div>
+<div class="text-left space-y-2">
+<p class="font-label text-xs tracking-[0.2em] text-[#8b6914]">CHARACTER ARCHIVE // v1.0</p>
+<h1 class="font-headline font-black text-7xl md:text-8xl leading-none flex flex-wrap gap-x-6">
+<span class="text-on-surface">THE</span>
+<span class="text-primary">CODEX</span>
+</h1>
+<p class="max-w-2xl text-outline font-body pt-4">
+                    Your archive of heroes, troubleshooters, and legends. Select a dossier or forge a new creation.
+                </p>
+</div>
+<div class="mt-12 flex items-center gap-4">
+<div class="h-[1px] flex-1 bg-gradient-to-r from-primary-container/40 to-transparent"></div>
+<span class="text-primary-container text-xs">◆</span>
+<div class="h-[1px] flex-1 bg-gradient-to-l from-primary-container/40 to-transparent"></div>
+</div>
+</section>
+<!-- SECTION 3: ACTIVE DOSSIERS -->
+<section class="pb-16 px-6 max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="folder_open">folder_open</span>
+<h2 class="font-headline font-black text-xl text-primary tracking-tight">ACTIVE DOSSIERS</h2>
+<span class="text-outline text-xs font-label opacity-60">— 5 RECORDS</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 border border-primary-container/20 hover:bg-surface-container transition-colors text-primary">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="p-2 border border-primary-container/20 hover:bg-surface-container transition-colors text-primary">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-4 no-scrollbar">
+<!-- Card 1 -->
+<div class="min-w-[300px] h-[180px] bg-surface-container border-l-[3px] border-error flex flex-col justify-between p-5 relative group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="absolute inset-0 border-r border-b border-white/5 pointer-events-none"></div>
+<div class="space-y-1">
+<p class="text-[10px] font-label text-error tracking-widest">PARANOIA 2E</p>
+<h3 class="font-headline font-bold text-lg text-on-surface">REX-R-GHQ-1</h3>
+</div>
+<div class="flex justify-between items-center text-xs font-label text-outline">
+<span>CLEARANCE: RED</span>
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[300px] h-[180px] bg-surface-container border-l-[3px] border-tertiary flex flex-col justify-between p-5 relative group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="absolute inset-0 border-r border-b border-white/5 pointer-events-none"></div>
+<div class="space-y-1">
+<p class="text-[10px] font-label text-tertiary tracking-widest">D&amp;D 5E</p>
+<h3 class="font-headline font-bold text-lg text-on-surface">AELINDRA NIGHTVEIL</h3>
+</div>
+<div class="flex justify-between items-center text-xs font-label text-outline">
+<span>LEVEL 8 ELF ROGUE</span>
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="min-w-[300px] h-[180px] bg-surface-container border-l-[3px] border-error flex flex-col justify-between p-5 relative group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="absolute inset-0 border-r border-b border-white/5 pointer-events-none"></div>
+<div class="space-y-1">
+<p class="text-[10px] font-label text-error tracking-widest">PARANOIA 2E</p>
+<h3 class="font-headline font-bold text-lg text-on-surface">ZIP-O-CRL-3</h3>
+</div>
+<div class="flex justify-between items-center text-xs font-label text-outline">
+<span>CLEARANCE: RED</span>
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="min-w-[300px] h-[180px] bg-surface-container border-l-[3px] border-tertiary flex flex-col justify-between p-5 relative group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="absolute inset-0 border-r border-b border-white/5 pointer-events-none"></div>
+<div class="space-y-1">
+<p class="text-[10px] font-label text-tertiary tracking-widest">D&amp;D 5E</p>
+<h3 class="font-headline font-bold text-lg text-on-surface">GORVIN ASHMANTLE</h3>
+</div>
+<div class="flex justify-between items-center text-xs font-label text-outline">
+<span>LEVEL 4 DWARF CLERIC</span>
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="min-w-[300px] h-[180px] bg-surface-container border-l-[3px] border-outline flex flex-col justify-between p-5 relative group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="absolute inset-0 border-r border-b border-white/5 pointer-events-none"></div>
+<div class="space-y-1">
+<p class="text-[10px] font-label text-outline tracking-widest uppercase">Warhammer 40k</p>
+<h3 class="font-headline font-bold text-lg text-on-surface">BROTHER VAREK</h3>
+</div>
+<div class="flex justify-between items-center text-xs font-label text-outline">
+<span>ULTRAMARINE VETERAN</span>
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</div>
+</div>
+<!-- New Dossier Card -->
+<div class="min-w-[300px] h-[180px] border-2 border-dashed border-[#8b6914]/25 flex items-center justify-center group cursor-pointer hover:bg-primary/5 transition-colors">
+<div class="text-center">
+<span class="material-symbols-outlined text-primary-container text-4xl" data-icon="add">add</span>
+<p class="font-label text-xs mt-2 text-primary-container">NEW DOSSIER</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: CHARACTER SYNTHESIZERS -->
+<section class="pb-24 px-6 max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="casino">casino</span>
+<h2 class="font-headline font-black text-xl text-primary tracking-tight uppercase">Character Synthesizers</h2>
+<span class="text-outline text-xs font-label opacity-60">— SELECT GAME SYSTEM</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 border border-primary-container/20 hover:bg-surface-container transition-colors text-primary">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<button class="p-2 border border-primary-container/20 hover:bg-surface-container transition-colors text-primary">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Synthesizer 1: Paranoia -->
+<div class="bg-surface-container-low p-8 relative border-t-[3px] border-error flex flex-col h-[380px]">
+<div class="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-error/50"></div>
+<div class="mb-6">
+<span class="material-symbols-outlined text-error text-4xl" data-icon="psychology">psychology</span>
+</div>
+<div class="space-y-2 mb-6">
+<h3 class="font-headline font-black text-2xl text-on-surface tracking-tighter">PARANOIA</h3>
+<p class="text-[10px] font-label text-error tracking-[0.2em]">2ND EDITION</p>
+</div>
+<p class="text-outline text-sm leading-relaxed flex-grow">
+                        Trust no one. Keep your laser handy. Service the Computer. Identity matrix generation protocols active.
+                    </p>
+<button class="w-full bg-error py-3 font-headline font-black text-on-error hover:opacity-90 transition-opacity uppercase text-sm tracking-wider">
+                        Create Character
+                    </button>
+</div>
+<!-- Synthesizer 2: D&D -->
+<div class="bg-surface-container-low p-8 relative border-t-[3px] border-tertiary flex flex-col h-[380px]">
+<div class="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-tertiary/50"></div>
+<div class="mb-6">
+<span class="material-symbols-outlined text-tertiary text-4xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="space-y-2 mb-6">
+<h3 class="font-headline font-black text-2xl text-on-surface tracking-tighter">DUNGEONS &amp; DRAGONS</h3>
+<p class="text-[10px] font-label text-tertiary tracking-[0.2em]">5TH EDITION</p>
+</div>
+<p class="text-outline text-sm leading-relaxed flex-grow">
+                        Forge a destiny in the forgotten realms. Standard array and point buy calculation engines available.
+                    </p>
+<button class="w-full border border-tertiary/30 py-3 font-headline font-black text-tertiary/40 cursor-not-allowed uppercase text-sm tracking-wider">
+                        Coming Soon
+                    </button>
+</div>
+<!-- Synthesizer 3: Warhammer -->
+<div class="bg-surface-container-low p-8 relative border-t-[3px] border-outline flex flex-col h-[380px]">
+<div class="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-outline/50"></div>
+<div class="mb-6">
+<span class="material-symbols-outlined text-outline text-4xl" data-icon="military_tech">military_tech</span>
+</div>
+<div class="space-y-2 mb-6">
+<h3 class="font-headline font-black text-2xl text-on-surface tracking-tighter uppercase">Warhammer</h3>
+<p class="text-[10px] font-label text-outline tracking-[0.2em]">40,000</p>
+</div>
+<p class="text-outline text-sm leading-relaxed flex-grow">
+                        In the grim darkness of the far future, there is only character creation. Registry of the Adeptus Astartes.
+                    </p>
+<button class="w-full border border-outline/30 py-3 font-headline font-black text-outline/40 cursor-not-allowed uppercase text-sm tracking-wider">
+                        Coming Soon
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Decoration -->
+<footer class="p-12 border-t border-primary-container/10">
+<div class="max-w-7xl mx-auto flex justify-between items-center text-[10px] font-label text-outline/40 tracking-widest">
+<div>CODEX TERMINAL // SECURE CONNECTION</div>
+<div class="flex items-center gap-4">
+<span>◆ 2024 INSTITUTIONAL ARCHIVE</span>
+<span class="text-primary-container/30">L-340.99.1</span>
+</div>
+</div>
+</footer>
+</body></html>

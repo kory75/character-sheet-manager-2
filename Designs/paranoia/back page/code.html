@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ALPHA COMPLEX TERMINAL - CHARACTER DOSSIER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#b6b5b4",
+                        "on-background": "#e4e1e8",
+                        "surface-variant": "#35343a",
+                        "on-surface-variant": "#e5bdb9",
+                        "on-surface": "#e4e1e8",
+                        "secondary-container": "#474747",
+                        "on-primary-container": "#ffd9d5",
+                        "surface-container-low": "#1b1b20",
+                        "surface-container": "#1f1f24",
+                        "tertiary-container": "#ba3123",
+                        "secondary-fixed-dim": "#c8c6c6",
+                        "background": "#131318",
+                        "primary-fixed-dim": "#ffb4ab",
+                        "surface-container-highest": "#35343a",
+                        "on-secondary": "#303030",
+                        "tertiary": "#ffb4a8",
+                        "surface-tint": "#ffb4ab",
+                        "primary": "#ffb4ab",
+                        "on-primary-fixed": "#410002",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "surface-container-lowest": "#0e0e13",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#bb1619",
+                        "secondary": "#c8c6c6",
+                        "surface-container-high": "#2a292f",
+                        "on-tertiary": "#690000",
+                        "on-tertiary-container": "#ffd9d3",
+                        "surface": "#131318",
+                        "surface-bright": "#39393e",
+                        "on-tertiary-fixed-variant": "#8f0f07",
+                        "surface-dim": "#131318",
+                        "on-primary": "#690005",
+                        "secondary-fixed": "#e4e2e1",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#c41e1e",
+                        "tertiary-fixed": "#ffdad4",
+                        "outline-variant": "#5c403d",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "outline": "#ab8884",
+                        "on-secondary-fixed-variant": "#474747",
+                        "on-error": "#690005",
+                        "primary-fixed": "#ffdad6",
+                        "inverse-on-surface": "#303035",
+                        "on-tertiary-fixed": "#410000",
+                        "inverse-surface": "#e4e1e8",
+                        "on-primary-fixed-variant": "#93000a"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131318;
+            color: #e4e1e8;
+            font-family: 'Inter', sans-serif;
+        }
+        .monospaced {
+            font-family: 'Space Grotesk', monospace;
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-white">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 bg-[#131318] dark:bg-[#131318] h-[3.5rem]">
+<div class="flex items-center gap-4">
+<span class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-xl font-black text-[#c41e1e] tracking-tighter">ALPHA COMPLEX TERMINAL</span>
+<div class="hidden md:flex items-center space-x-6 ml-10">
+<span class="font-['Space_Grotesk'] text-xs font-bold uppercase text-[#c41e1e] font-bold">Dossier</span>
+<span class="font-['Space_Grotesk'] text-xs font-bold uppercase text-[#35343a] hover:bg-[#35343a] transition-colors cursor-pointer px-2 py-1">Inventory</span>
+<span class="font-['Space_Grotesk'] text-xs font-bold uppercase text-[#35343a] hover:bg-[#35343a] transition-colors cursor-pointer px-2 py-1">Mutations</span>
+<span class="font-['Space_Grotesk'] text-xs font-bold uppercase text-[#35343a] hover:bg-[#35343a] transition-colors cursor-pointer px-2 py-1">Service</span>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-[#c41e1e] cursor-pointer hover:bg-[#35343a] p-1 transition-colors">security</span>
+<span class="material-symbols-outlined text-[#c41e1e] cursor-pointer hover:bg-[#35343a] p-1 transition-colors">terminal</span>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-64 z-40 flex flex-col pt-20 bg-[#131318] dark:bg-[#131318]">
+<div class="px-6 mb-8">
+<h2 class="font-['Space_Grotesk'] text-xs font-bold uppercase text-[#c41e1e]">SECTOR 4-G</h2>
+<p class="font-['Space_Grotesk'] text-[10px] font-bold uppercase text-gray-500">CLEARANCE: INFRARED</p>
+</div>
+<nav class="flex-1">
+<div class="bg-[#c41e1e] text-white p-4 w-full flex items-center space-x-3 border-l-4 border-[#c41e1e]">
+<span class="material-symbols-outlined">lock</span>
+<span class="font-['Space_Grotesk'] text-xs font-bold uppercase">INFRARED</span>
+</div>
+<div class="text-gray-500 p-4 w-full flex items-center space-x-3 opacity-60 hover:bg-[#1f1f24] hover:opacity-100 cursor-pointer">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-['Space_Grotesk'] text-xs font-bold uppercase">RED</span>
+</div>
+<div class="text-gray-500 p-4 w-full flex items-center space-x-3 opacity-60 hover:bg-[#1f1f24] hover:opacity-100 cursor-pointer">
+<span class="material-symbols-outlined">key</span>
+<span class="font-['Space_Grotesk'] text-xs font-bold uppercase">ORANGE</span>
+</div>
+<div class="text-gray-500 p-4 w-full flex items-center space-x-3 opacity-60 hover:bg-[#1f1f24] hover:opacity-100 cursor-pointer">
+<span class="material-symbols-outlined">folder_shared</span>
+<span class="font-['Space_Grotesk'] text-xs font-bold uppercase">YELLOW</span>
+</div>
+<div class="text-gray-500 p-4 w-full flex items-center space-x-3 opacity-60 hover:bg-[#1f1f24] hover:opacity-100 cursor-pointer">
+<span class="material-symbols-outlined">policy</span>
+<span class="font-['Space_Grotesk'] text-xs font-bold uppercase">GREEN</span>
+</div>
+</nav>
+<div class="p-6 mt-auto">
+<div class="bg-surface-container-high p-4 flex items-center space-x-3">
+<div class="w-8 h-8 bg-primary-container flex items-center justify-center text-white font-black text-xs">HP</div>
+<div>
+<p class="font-['Space_Grotesk'] text-[10px] font-bold text-white uppercase">High Programmer</p>
+<p class="font-Inter text-[8px] text-gray-500 uppercase">Status: Vigilant</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 md:pl-72 md:pr-10 px-6 min-h-screen">
+<!-- Header Quote Section -->
+<div class="mb-12 flex flex-col items-start border-l-2 border-primary-container pl-6 py-4">
+<h1 class="font-headline text-4xl font-black uppercase tracking-tighter text-on-surface">THE COMPUTER IS YOUR FRIEND</h1>
+<p class="font-label text-sm text-primary-container tracking-widest mt-1">HAPPINESS IS MANDATORY. FAILURE TO BE HAPPY IS TREASON.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Identity & Attributes -->
+<div class="lg:col-span-4 space-y-8">
+<!-- (1) Identity Section -->
+<section class="bg-surface-container p-6 border-b-4 border-primary-container">
+<div class="flex justify-between items-start mb-6">
+<span class="font-label text-[10px] text-primary font-bold uppercase">Subject ID</span>
+<span class="bg-tertiary-container px-2 py-0.5 font-label text-[10px] text-white font-black">ACTIVE</span>
+</div>
+<div class="space-y-4">
+<div>
+<h2 class="font-headline text-3xl font-black text-white leading-none">TEST-R-ION-1</h2>
+<p class="font-label text-xs text-primary-container uppercase mt-1">Citizenship Status: Provisional</p>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/5">
+<div>
+<p class="font-label text-[10px] text-gray-500 uppercase">Clearance</p>
+<p class="font-headline text-sm font-bold text-on-surface uppercase tracking-wider">INFRARED</p>
+</div>
+<div>
+<p class="font-label text-[10px] text-gray-500 uppercase">Sector</p>
+<p class="font-headline text-sm font-bold text-on-surface uppercase tracking-wider">G-7-ALPHA</p>
+</div>
+</div>
+</div>
+</section>
+<!-- (2) Attributes Section -->
+<section class="bg-surface-container p-6">
+<h3 class="font-headline text-sm font-black text-[#c41e1e] uppercase mb-6 tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">settings_input_component</span>
+                        Primary Attributes
+                    </h3>
+<div class="grid grid-cols-2 gap-y-6 gap-x-4">
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-gray-500 uppercase">Violence</span>
+<span class="monospaced text-2xl font-bold text-white">18</span>
+<div class="w-full bg-surface-container-highest h-1 mt-1">
+<div class="bg-primary-container h-full w-[90%]"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-gray-500 uppercase">Brains</span>
+<span class="monospaced text-2xl font-bold text-white">08</span>
+<div class="w-full bg-surface-container-highest h-1 mt-1">
+<div class="bg-primary-container h-full w-[40%]"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-gray-500 uppercase">Chutzpah</span>
+<span class="monospaced text-2xl font-bold text-white">12</span>
+<div class="w-full bg-surface-container-highest h-1 mt-1">
+<div class="bg-primary-container h-full w-[60%]"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-gray-500 uppercase">Mechanics</span>
+<span class="monospaced text-2xl font-bold text-white">14</span>
+<div class="w-full bg-surface-container-highest h-1 mt-1">
+<div class="bg-primary-container h-full w-[70%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- (3) Derived Stats -->
+<section class="bg-surface-container-low p-6 space-y-4">
+<h3 class="font-headline text-sm font-black text-[#c41e1e] uppercase tracking-widest">Derived Logistics</h3>
+<div class="space-y-3">
+<div class="flex justify-between items-center bg-surface-container px-3 py-2">
+<span class="font-label text-xs uppercase text-on-surface">Carrying Capacity</span>
+<span class="monospaced font-bold text-primary">75 KG</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container px-3 py-2">
+<span class="font-label text-xs uppercase text-on-surface">Damage Bonus</span>
+<span class="monospaced font-bold text-primary">+04</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container px-3 py-2">
+<span class="font-label text-xs uppercase text-on-surface">Machinability</span>
+<span class="monospaced font-bold text-primary">0.82</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Skills & Weapons -->
+<div class="lg:col-span-8 space-y-8">
+<!-- (4) Skills Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Combat -->
+<div class="bg-surface-container p-6">
+<h4 class="font-headline text-xs font-black text-primary-container uppercase mb-4 border-b border-white/10 pb-2">Combat Skills</h4>
+<ul class="space-y-3">
+<li class="flex justify-between items-center group">
+<span class="font-body text-xs uppercase text-gray-400">Laser Weapons</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+</div>
+</li>
+<li class="flex justify-between items-center">
+<span class="font-body text-xs uppercase text-gray-400">Unarmed Prowess</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+</div>
+</li>
+<li class="flex justify-between items-center">
+<span class="font-body text-xs uppercase text-gray-400">Demolition</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+</div>
+</li>
+</ul>
+</div>
+<!-- Communications -->
+<div class="bg-surface-container p-6">
+<h4 class="font-headline text-xs font-black text-primary-container uppercase mb-4 border-b border-white/10 pb-2">Communications</h4>
+<ul class="space-y-3">
+<li class="flex justify-between items-center">
+<span class="font-body text-xs uppercase text-gray-400">Standard English</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+</div>
+</li>
+<li class="flex justify-between items-center">
+<span class="font-body text-xs uppercase text-gray-400">Bribing</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+</div>
+</li>
+</ul>
+</div>
+<!-- Stealth -->
+<div class="bg-surface-container p-6">
+<h4 class="font-headline text-xs font-black text-primary-container uppercase mb-4 border-b border-white/10 pb-2">Stealth Operations</h4>
+<ul class="space-y-3">
+<li class="flex justify-between items-center">
+<span class="font-body text-xs uppercase text-gray-400">Shadowing</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+</div>
+</li>
+<li class="flex justify-between items-center">
+<span class="font-body text-xs uppercase text-gray-400">Surveillance</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+</div>
+</li>
+</ul>
+</div>
+<!-- Technical -->
+<div class="bg-surface-container p-6">
+<h4 class="font-headline text-xs font-black text-primary-container uppercase mb-4 border-b border-white/10 pb-2">Technical Systems</h4>
+<ul class="space-y-3">
+<li class="flex justify-between items-center">
+<span class="font-body text-xs uppercase text-gray-400">Terminal Access</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+</div>
+</li>
+<li class="flex justify-between items-center">
+<span class="font-body text-xs uppercase text-gray-400">Hardware Repair</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-primary-container"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+<div class="w-3 h-3 bg-surface-container-highest"></div>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<!-- (5) Weapons List Section -->
+<section class="bg-surface-container-highest p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 opacity-10 bg-gradient-to-bl from-primary-container to-transparent pointer-events-none"></div>
+<h3 class="font-headline text-sm font-black text-white uppercase mb-6 tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">precision_manufacturing</span>
+                        Authorized Armaments
+                    </h3>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10">
+<th class="py-3 font-label text-[10px] text-primary uppercase">Weapon Class</th>
+<th class="py-3 font-label text-[10px] text-primary uppercase">Damage</th>
+<th class="py-3 font-label text-[10px] text-primary uppercase">Type</th>
+<th class="py-3 font-label text-[10px] text-primary uppercase">Range</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="group hover:bg-white/5 transition-colors">
+<td class="py-4 font-body text-xs text-white font-bold">LASER PISTOL (Mk IV)</td>
+<td class="py-4 monospaced text-xs text-on-surface">W2</td>
+<td class="py-4 font-label text-[10px] text-gray-400 uppercase">Energy</td>
+<td class="py-4 monospaced text-xs text-on-surface">50M</td>
+</tr>
+<tr class="group hover:bg-white/5 transition-colors">
+<td class="py-4 font-body text-xs text-white font-bold">SONIC BLUNCHEON</td>
+<td class="py-4 monospaced text-xs text-on-surface">E3</td>
+<td class="py-4 font-label text-[10px] text-gray-400 uppercase">Melee/Vibro</td>
+<td class="py-4 monospaced text-xs text-on-surface">1M</td>
+</tr>
+<tr class="group hover:bg-white/5 transition-colors">
+<td class="py-4 font-body text-xs text-white font-bold">NEURO-GRENADE</td>
+<td class="py-4 monospaced text-xs text-on-surface">S1 (AOE)</td>
+<td class="py-4 font-label text-[10px] text-gray-400 uppercase">Chem-Aero</td>
+<td class="py-4 monospaced text-xs text-on-surface">15M</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Data Visualizer Placeholder -->
+<div class="h-32 bg-surface-container flex items-center justify-center border-2 border-dashed border-outline-variant/20">
+<div class="text-center opacity-30">
+<span class="material-symbols-outlined text-4xl block mb-2">analytics</span>
+<p class="font-label text-[10px] uppercase tracking-widest">Awaiting Neural Link Synchronization...</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around bg-[#131318] border-t border-[#c41e1e]/20">
+<a class="flex flex-col items-center justify-center bg-[#c41e1e] text-white p-2 min-w-[80px] ring-inset ring-1 ring-[#c41e1e]" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-black">Dossier</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-600 p-2 hover:bg-[#1f1f24]" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-black">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-600 p-2 hover:bg-[#1f1f24]" href="#">
+<span class="material-symbols-outlined">biotech</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-black">Mutations</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-600 p-2 hover:bg-[#1f1f24]" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-black">Service</span>
+</a>
+</nav>
+</body></html>

@@ -14,6 +14,7 @@ import { PARANOIA_PURCHASABLE_EQUIPMENT } from '../../games/paranoia-2e/data/equ
 import { PARANOIA_MUTATIONS, MUTATION_BY_ID } from '../../games/paranoia-2e/data/mutations.data';
 import { PARANOIA_SECRET_SOCIETIES, SECRET_SOCIETY_BY_ID } from '../../games/paranoia-2e/data/secret-societies.data';
 import { rollSecretSociety, rollCoverSociety } from '../../games/paranoia-2e/creation-rules';
+import { CharacterStorageService } from '../../services/character-storage.service';
 import { PARANOIA_SERVICE_GROUPS, SERVICE_GROUP_BY_ID } from '../../games/paranoia-2e/data/service-groups.data';
 import { PARANOIA_SKILLS } from '../../games/paranoia-2e/data/skills.data';
 import { calcSkillBase } from '../../games/paranoia-2e/creation-rules';
@@ -776,7 +777,8 @@ export class ParanoiaCreationComponent {
 
   // ── Step navigation ───────────────────────────────────────────────────────
 
-  private readonly _router = inject(Router);
+  private readonly _router  = inject(Router);
+  private readonly _storage = inject(CharacterStorageService);
 
   finalise(): void {
     const mut    = this.mutationId()     ? MUTATION_BY_ID[this.mutationId()!]         : null;
@@ -820,6 +822,20 @@ export class ParanoiaCreationComponent {
       publicNotes:          this.publicNotes(),
       secretNotes:          this.secretNotes(),
     });
+
+    const saveData = {
+      system: 'paranoia-2e' as const,
+      name: this.fullName(),
+      statLine: `CLEARANCE: ${this.clearance()}`,
+      snapshot: this._draft.snapshot()!,
+    };
+    const editingId = this._storage.editingId();
+    if (editingId) {
+      this._storage.update(editingId, saveData);
+      this._storage.editingId.set(null);
+    } else {
+      this._storage.save(saveData);
+    }
 
     this._router.navigate(['/sheet']);
   }

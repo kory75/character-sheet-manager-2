@@ -1,12 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-interface DossierCard {
-  system: string;
-  systemColor: string;
-  name: string;
-  statLine: string;
-}
+import { Component, computed, inject } from '@angular/core';
+import { RouterLink, Router } from '@angular/router';
+import { CharacterStorageService } from '../../services/character-storage.service';
 
 interface SynthesizerCard {
   system: string;
@@ -17,14 +11,6 @@ interface SynthesizerCard {
   route: string | null;
   experimental?: boolean;
 }
-
-const DOSSIER_CARDS: DossierCard[] = [
-  { system: 'PARANOIA 2E',       systemColor: '#c41e1e', name: 'REX-R-GHQ-1',       statLine: 'CLEARANCE: RED' },
-  { system: 'D&D 5E',            systemColor: '#fa8840', name: 'AELINDRA NIGHTVEIL', statLine: 'LEVEL 8 ELF ROGUE' },
-  { system: 'PARANOIA 2E',       systemColor: '#c41e1e', name: 'ZIP-O-CRL-3',        statLine: 'CLEARANCE: RED' },
-  { system: 'D&D 5E',            systemColor: '#fa8840', name: 'GORVIN ASHMANTLE',   statLine: 'LEVEL 4 DWARF CLERIC' },
-  { system: 'WARHAMMER FANTASY', systemColor: '#99907b', name: 'BROTHER VAREK',      statLine: 'DWARF SLAYER · REGIMENT III' },
-];
 
 const SYNTHESIZER_CARDS: SynthesizerCard[] = [
   {
@@ -141,7 +127,7 @@ const SYNTHESIZER_CARDS: SynthesizerCard[] = [
           <span
             class="text-xs font-bold px-2 py-0.5 rounded"
             style="background:#2a292f; color:#99907b;"
-          >{{ dossierCards.length }}</span>
+          >{{ dossierCards().length }}</span>
           <div class="flex items-center gap-1 ml-auto">
             <button
               class="p-1.5 rounded transition-colors hover:bg-white/5"
@@ -168,11 +154,12 @@ const SYNTHESIZER_CARDS: SynthesizerCard[] = [
           class="flex gap-6 overflow-x-auto no-scrollbar pb-2"
         >
           <!-- Dossier cards -->
-          @for (card of dossierCards; track card.name) {
+          @for (card of dossierCards(); track card.id) {
             <div
-              class="flex-shrink-0 bg-surface-container rounded-lg p-5 flex flex-col justify-between"
+              class="flex-shrink-0 bg-surface-container rounded-lg p-5 flex flex-col justify-between cursor-pointer transition-colors hover:bg-white/5"
               style="min-width:300px; height:180px;"
               [style.border-left]="'3px solid ' + card.systemColor"
+              (click)="openCharacter(card.id)"
             >
               <div>
                 <p class="text-[10px] font-bold tracking-[0.2em] mb-2" [style.color]="card.systemColor">
@@ -181,9 +168,28 @@ const SYNTHESIZER_CARDS: SynthesizerCard[] = [
                 <p class="text-base font-bold text-on-surface tracking-wide">{{ card.name }}</p>
                 <p class="text-xs mt-1" style="color:#99907b;">{{ card.statLine }}</p>
               </div>
-              <div class="flex justify-end">
+              <div class="flex justify-end items-center gap-2">
+                <button
+                  (click)="deleteCharacter($event, card.id)"
+                  class="p-1 rounded transition-colors hover:bg-white/10"
+                  style="color:#99907b;"
+                  aria-label="Delete character"
+                >
+                  <span class="material-symbols-outlined text-base">delete</span>
+                </button>
                 <span class="material-symbols-outlined text-base" style="color:#99907b;">visibility</span>
               </div>
+            </div>
+          }
+
+          @if (dossierCards().length === 0) {
+            <div
+              class="flex-shrink-0 rounded-lg flex flex-col items-center justify-center gap-2 px-8"
+              style="min-width:300px; height:180px; border:1px dashed rgba(153,144,123,0.2);"
+            >
+              <p class="text-xs tracking-[0.15em] text-center" style="color:#99907b;">
+                No characters yet — create one below
+              </p>
             </div>
           }
 
@@ -280,8 +286,29 @@ const SYNTHESIZER_CARDS: SynthesizerCard[] = [
   `,
 })
 export class HomeComponent {
-  readonly dossierCards = DOSSIER_CARDS;
+  private readonly _storage = inject(CharacterStorageService);
+  private readonly _router  = inject(Router);
+
   readonly synthCards = SYNTHESIZER_CARDS;
+
+  readonly dossierCards = computed(() =>
+    this._storage.characters().map(c => ({
+      id: c.id,
+      system: c.system === 'paranoia-2e' ? 'PARANOIA 2E' : 'D&D 5E 2024',
+      systemColor: c.system === 'paranoia-2e' ? '#c41e1e' : '#fa8840',
+      name: c.name,
+      statLine: c.statLine,
+    }))
+  );
+
+  openCharacter(id: string): void {
+    this._router.navigate(['/load'], { queryParams: { id } });
+  }
+
+  deleteCharacter(event: MouseEvent, id: string): void {
+    event.stopPropagation();
+    this._storage.delete(id);
+  }
 
   scroll(track: HTMLElement, dir: 'left' | 'right'): void {
     track.scrollBy({ left: dir === 'left' ? -316 : 316, behavior: 'smooth' });

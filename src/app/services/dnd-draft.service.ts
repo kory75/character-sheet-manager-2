@@ -227,6 +227,67 @@ export class DndDraftService {
     }
   }
 
+  // ── Load from saved snapshot ──────────────────────────────────────────────
+
+  loadFromSnapshot(s: DndSnapshot): void {
+    this.characterName.set(s.characterName);
+    this.playerName.set(s.playerName);
+    this.characterLevel.set(s.characterLevel);
+    this.experiencePoints.set(s.experiencePoints);
+    this.background.set(s.background);
+    this.species.set(s.species);
+    this.characterClass.set(s.characterClass);
+    this.subclass.set(s.subclass);
+    this.abilityScoreMethod.set(s.abilityScoreMethod as 'roll' | 'standard-array' | 'point-buy');
+    this.strength.set(s.strength);
+    this.dexterity.set(s.dexterity);
+    this.constitution.set(s.constitution);
+    this.intelligence.set(s.intelligence);
+    this.wisdom.set(s.wisdom);
+    this.charisma.set(s.charisma);
+    this.skillProficiencies.set({ ...s.skillProficiencies });
+    this.skillExpertise.set({ ...s.skillExpertise });
+    this.savingThrowProficiencies.set({ ...s.savingThrowProficiencies });
+    this.armorClass.set(s.armorClass);
+    this.speed.set(s.speed);
+    this.hitDiceOverride.set('');
+    this.deathSaveSuccesses.set(s.deathSaveSuccesses);
+    this.deathSaveFailures.set(s.deathSaveFailures);
+    this.gold.set(s.gold);
+    this.silver.set(s.silver);
+    this.copper.set(s.copper);
+    this.electrum.set(s.electrum);
+    this.platinum.set(s.platinum);
+    this.armorName.set(s.armorName);
+    this.armorType.set(s.armorType);
+    this.weapons.set(s.weapons.map(w => ({ ...w })));
+    this.equipment.set(s.equipment);
+    this.spellcastingClass.set(s.spellcastingClass);
+    this.spellcastingAbility.set(s.spellcastingAbility);
+    this.spellSlots.set({ ...s.spellSlots });
+    this.cantrips.set(s.cantrips);
+    this.spells1.set(s.spells1);
+    this.spells2.set(s.spells2);
+    this.spells3.set(s.spells3);
+    this.spells4.set(s.spells4);
+    this.spells5.set(s.spells5);
+    this.personalityTraits.set(s.personalityTraits);
+    this.ideals.set(s.ideals);
+    this.bonds.set(s.bonds);
+    this.flaws.set(s.flaws);
+    this.featName.set(s.featName);
+    this.featDescription.set(s.featDescription);
+    this.languagesKnown.set(s.languagesKnown);
+    this.toolProficiencies.set(s.toolProficiencies);
+    this.otherProficiencies.set(s.otherProficiencies);
+    this.backstory.set(s.backstory);
+    this.alliesOrganizations.set(s.alliesOrganizations);
+    this.additionalFeatures.set(s.additionalFeatures);
+    this.treasure.set(s.treasure);
+    this.notes.set(s.notes);
+    this.snapshot.set(s);
+  }
+
   // ── Finalise ──────────────────────────────────────────────────────────────
 
   finalise(): void {

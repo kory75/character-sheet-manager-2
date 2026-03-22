@@ -12,6 +12,7 @@ import { DndSpellcastingStepComponent } from './spellcasting-step/spellcasting-s
 import { DndBackgroundStepComponent } from './background-step/background-step.component';
 import { DndNotesStepComponent } from './notes-step/notes-step.component';
 import { getHitDieSizeFromClass } from '../../games/dnd-5e-2024/creation-rules';
+import { CharacterStorageService } from '../../services/character-storage.service';
 
 interface WizardStep { label: string; subtitle: string; }
 
@@ -385,9 +386,10 @@ const DND_CLASSES = [
   `],
 })
 export class DndCreationComponent {
-  readonly draft   = inject(DndDraftService);
-  private _router  = inject(Router);
-  private _zone    = inject(NgZone);
+  readonly draft    = inject(DndDraftService);
+  private _router   = inject(Router);
+  private _zone     = inject(NgZone);
+  private _storage  = inject(CharacterStorageService);
 
   readonly steps           = WIZARD_STEPS;
   readonly currentStep     = signal(0);
@@ -429,6 +431,22 @@ export class DndCreationComponent {
 
   finalise(): void {
     this.draft.finalise();
+    const snap = this.draft.snapshot()!;
+    const saveData = {
+      system: 'dnd-5e-2024' as const,
+      name: snap.characterName || 'Unnamed Adventurer',
+      statLine: snap.characterClass
+        ? `LEVEL ${snap.characterLevel} ${snap.species.toUpperCase()} ${snap.characterClass.toUpperCase()}`
+        : `LEVEL ${snap.characterLevel}`,
+      snapshot: snap,
+    };
+    const editingId = this._storage.editingId();
+    if (editingId) {
+      this._storage.update(editingId, saveData);
+      this._storage.editingId.set(null);
+    } else {
+      this._storage.save(saveData);
+    }
     this._router.navigate(['/dnd-sheet']);
   }
 

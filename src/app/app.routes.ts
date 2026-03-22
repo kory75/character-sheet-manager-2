@@ -37,6 +37,12 @@ export const routes: Routes = [
           import('./pages/dnd-sheet/dnd-sheet.component')
             .then(m => m.DndSheetComponent),
       },
+      {
+        path: 'load',
+        loadComponent: () =>
+          import('./pages/load-character/load-character.component')
+            .then(m => m.LoadCharacterComponent),
+      },
     ],
   },
 ];

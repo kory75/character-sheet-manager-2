@@ -7,10 +7,14 @@ A browser-based character sheet builder for tabletop RPGs. Build, store, and pri
 
 ---
 
-## What's working (v0.2)
+## What's working (v0.3)
 
 ### Home page (`/`)
-Neutral landing page with a dossier carousel (placeholder characters) and a character synthesizer grid listing available game systems.
+Landing page with a live dossier carousel and a character synthesizer grid listing available game systems.
+
+- Saved characters appear as dossier cards with system colour, name, and stat line
+- Click a card to reopen the sheet; click the delete icon to remove it from storage
+- Characters persist across page refreshes via `localStorage`
 
 ---
 
@@ -57,7 +61,9 @@ Character sheet (`/dnd-sheet`):
 
 Auto-roll cascade animates through all 10 steps, rolling ability scores one-by-one.
 
-> **Experimental:** Skill and expertise slot limits are not yet enforced (pending rules research). Character data is in-memory only — refreshing the page clears the character.
+Sheet includes an **Edit** button that returns to the wizard with all fields pre-populated from the saved character.
+
+> **Experimental:** Skill and expertise slot limits are not yet enforced (pending rules research).
 
 ---
 
@@ -91,5 +97,3 @@ npx ng build        # production build → dist/
 | D&D 5e 2024 | 🚧 Experimental — wizard and sheet built, rules enforcement incomplete |
 | Warhammer Fantasy Roleplay | ⏳ Planned |
 | Call of Cthulhu 7e | ⏳ Planned |
-
-> Character data is held in memory only across all systems. There is no save/load yet — refreshing the page clears the character. Print before you close the tab.
